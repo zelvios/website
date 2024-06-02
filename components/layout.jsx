@@ -1,6 +1,6 @@
-import Head from "next/head"
-import Footer from "./ui/Footer"
-import Navbar from "./ui/Navbar"
+import Head from "next/head";
+import Footer from "./ui/Footer";
+import Navbar from "./ui/Navbar";
 
 const Layout = ({ children }) => {
     return (
@@ -14,8 +14,11 @@ const Layout = ({ children }) => {
             <Navbar />
             <main>{children}</main>
             <Footer />
+            <footer>
+                <p>© 2024 Jacob-J Portfolio. All rights reserved.</p>
+            </footer>
         </>
-    )
-}
+    );
+};
 
-export default Layout
+export default Layout;
