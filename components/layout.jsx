@@ -14,9 +14,6 @@ const Layout = ({ children }) => {
             <Navbar />
             <main>{children}</main>
             <Footer />
-            <footer>
-                <p>© 2024 Jacob-J Portfolio. All rights reserved.</p>
-            </footer>
         </>
     );
 };

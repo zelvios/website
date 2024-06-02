@@ -18,6 +18,7 @@
     "plyr-react": "^5.1.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "scrollmagic": "^2.0.8",
     "source-map-url": "^0.4.1"
   },
   "devDependencies": {

@@ -20,12 +20,15 @@ const Contact = () => {
                     <p className='mt-3 max-w-xl'>
                         Feel free to explore my social channels for additional insights or if you're interested in
                         potential collaborations: <br/><br/>
-                        Email ➣ contact@jacob-j.com <br/>
-                        GitHub ➣ <br/>
+                        Email ➣ <a href="mailto:contact@jacob-j.com"
+                                   className="text-blue-500 underline">contact@jacob-j.com</a> <br/>
+                        GitHub ➣ <a href="https://github.com/Zelvios" target="_blank" rel="noopener noreferrer"
+                                    className="text-blue-500 underline">github.com/zelvios</a> <br/>
                         LinkedIn ➣
                     </p>
                 </div>
-                <div className="mt-12 w-full md:w-3/4 lg:w-2/4 bg-white dark:bg-gray-900/50 rounded-xl shadow-lg md:mt-0">
+                <div
+                    className="mt-12 w-full md:w-3/4 lg:w-2/4 bg-white dark:bg-gray-900/50 rounded-xl shadow-lg md:mt-0">
                     <div className="h-full p-6 space-y-3">
                         <div className="flex flex-wrap items-center justify-between gap-3">
                             <span className="text-2xl text-gray-800 dark:text-gray-50 font-semibold">

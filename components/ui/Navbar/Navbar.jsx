@@ -1,8 +1,8 @@
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, useState } from 'react'
 import Brand from '../Brand'
 import DarkModeHandler from '../DarkModeHandler'
+import Link from "next/link";
 
 const Navbar = () => {
 
@@ -22,7 +22,7 @@ const Navbar = () => {
     const brandColor = addColor("text-gray-900", "text-white")
     // Navigation links color config
     const navLinkColor = addColor("text-gray-700 hover:text-blue-600 md:text-gray-600", "text-gray-200 hover:text-sky-500")
-    // Navbar menu nutton config
+    // Navbar menu button config
     const navMenuBtnColor = addColor("text-gray-500 hover:bg-gray-50", "text-gray-400 hover:bg-gray-800")
 
     const navigation = [
@@ -40,6 +40,13 @@ const Navbar = () => {
         };
         window.onscroll = () => setState(false);
     }, [])
+
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     const DarkModeBtn = () => <DarkModeHandler className={`dark:text-sky-500 ${addColor("text-blue-600 hover:bg-gray-50", "text-sky-500 hover:bg-gray-800")}`} />
 
@@ -76,13 +83,16 @@ const Navbar = () => {
                                 navigation.map((item, idx) => {
                                     return (
                                         <li key={idx} className={`${navLinkColor} dark:text-gray-200 dark:hover:text-sky-500 duration-150`}>
-                                            <Link
+                                            <a
                                                 href={item.href}
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    scrollToSection(item.href.substring(1));
+                                                }}
                                                 className="block"
-                                                scroll={false}
                                             >
                                                 {item.name}
-                                            </Link>
+                                            </a>
                                         </li>
                                     )
                                 })
