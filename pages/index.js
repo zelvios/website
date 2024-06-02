@@ -41,8 +41,13 @@ export default function Home() {
         // Add event listener for scroll
         window.addEventListener("scroll", handleScroll);
 
+        // Scroll to the top when component mounts
+        window.scrollTo(0, 0);
+
         // Cleanup
-        return () => window.removeEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
     }, []);
 
     const scrollToTop = () => {
@@ -54,13 +59,13 @@ export default function Home() {
 
     return (
         <>
-            <FadeInSection delay={delay * 0}>
+            <FadeInSection delay={0}>
                 <Hero />
             </FadeInSection>
-            <FadeInSection delay={delay * 1}>
+            <FadeInSection delay={delay}>
                 <CTA />
             </FadeInSection>
-            <FadeInSection delay={delay * 1}>
+            <FadeInSection delay={delay}>
                 <Skills />
             </FadeInSection>
             <FadeInSection delay={delay * 2}>
