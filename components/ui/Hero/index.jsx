@@ -34,7 +34,7 @@ const Hero = () => {
                     </div>
                     <div className="flex-1 w-full sm:max-w-2xl xl:max-w-xl">
                         <div className="relative">
-                            <Image src={heroThumbnail} className="rounded-lg w-full" alt="Jacob-J" />
+                            <Image src={heroThumbnail} className="rounded-lg w-full" alt="Jacob-J" priority={true}/>
                         </div>
                     </div>
                 </div>
