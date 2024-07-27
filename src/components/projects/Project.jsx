@@ -79,7 +79,7 @@ export const Project = ({
               </div>
             </Reveal>
             <Reveal>
-              <div className="flex flex-wrap gap-4 text-sm text-indigo-300 my-2">
+              <div className="flex flex-wrap gap-4 text-sm text-indigo-200 my-2">
                 {tech.join(" - ")}
               </div>
             </Reveal>

@@ -6,7 +6,7 @@ import { twMerge } from "tailwind-merge";
 // Main Component
 export const DarkGridHero = () => {
     return (
-        <section className="section-wrapper" id="about">
+        <section className="section-wrapper" id="hero">
             <div className="absolute top-0 left-0 right-0 overflow-hidden bg-zinc-950 flex items-center justify-center" style={{ height: '900px' }}>
                 <Content />
                 <Beams />
