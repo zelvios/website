@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import { SideBar } from "./nav/SideBar";
 import { Header } from "./nav/Header";
 import Hero from "./hero/Hero";
@@ -34,26 +35,32 @@ export const HomPage = () => {
     };
 
     return (
-        <div className="grid grid-cols-[54px_1fr]">
-            <SideBar />
-            <main>
-                <Header />
-                <div className="mx-auto max-w-5xl px-4 md:px-8 space-y-32 pb-24">
-                    <Hero />
-                    <About />
-                    <Projects />
-                    <Experience />
-                    <Contact />
-                </div>
-            </main>
-            {showScrollTopButton && (
-                <button
-                    onClick={scrollToTop}
-                    className="fixed bottom-10 right-10 p-3 bg-slate-600 text-white rounded-full shadow-lg hover:bg-slate-700"
-                >
-                    ↑
-                </button>
-            )}
-        </div>
+        <>
+            <Head>
+                <title>Jacob-J</title>
+                <meta name="description" content="A portfolio created to showcase expertise in web development, design, and programming." />
+            </Head>
+            <div className="grid grid-cols-[54px_1fr]">
+                <SideBar />
+                <main>
+                    <Header />
+                    <div className="mx-auto max-w-5xl px-4 md:px-8 space-y-32 pb-24">
+                        <Hero />
+                        <About />
+                        <Projects />
+                        <Experience />
+                        <Contact />
+                    </div>
+                </main>
+                {showScrollTopButton && (
+                    <button
+                        onClick={scrollToTop}
+                        className="fixed bottom-10 right-10 p-3 bg-slate-600 text-white rounded-full shadow-lg hover:bg-slate-700"
+                    >
+                        ↑
+                    </button>
+                )}
+            </div>
+        </>
     );
 };
