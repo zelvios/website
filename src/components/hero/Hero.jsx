@@ -121,7 +121,7 @@ const Beams = () => {
     const numColumns = width ? Math.floor(width / GRID_BOX_SIZE) : 0;
 
     const placements = [
-        { top: GRID_BOX_SIZE * 0, left: Math.floor(numColumns * 0.05) * GRID_BOX_SIZE, transition: { duration: 3.5, repeatDelay: 5, delay: 2 } },
+        { top: 0, left: Math.floor(numColumns * 0.05) * GRID_BOX_SIZE, transition: { duration: 3.5, repeatDelay: 5, delay: 2 } },
         { top: GRID_BOX_SIZE * 12, left: Math.floor(numColumns * 0.15) * GRID_BOX_SIZE, transition: { duration: 3.5, repeatDelay: 10, delay: 4 } },
         { top: GRID_BOX_SIZE * 3, left: Math.floor(numColumns * 0.25) * GRID_BOX_SIZE },
         { top: GRID_BOX_SIZE * 9, left: Math.floor(numColumns * 0.75) * GRID_BOX_SIZE, transition: { duration: 2, repeatDelay: 7.5, delay: 3.5 } },

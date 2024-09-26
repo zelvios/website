@@ -20,7 +20,7 @@ const projects = [
     {
         title: "Todo-TUI",
         imgSrc: "project-imgs/todo-tui.png",
-        code: "https://github.com/Zelvios/website",
+        code: "https://github.com/Zelvios/todo-tui",
         projectLink: "",
         tech: ["Rust"],
         description: "A simple Todo app designed with ratatui.rs",

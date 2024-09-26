@@ -11,7 +11,7 @@ export const Contact = () => {
             <EmailCard />
             <Card
                 title="LinkedIn"
-                subtitle="sssssssssssss"
+                subtitle="Jacob Jørgensen"
                 href="https://www.linkedin.com/in/jacob-j%C3%B8rgensen-851430261/"
                 Icon={AiFillLinkedin }
             />

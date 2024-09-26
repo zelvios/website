@@ -19,7 +19,7 @@ const experience = [
     time: "2022 - 2026",
     location: "Aalborg - Denmark",
     description:
-      "Continuing education: Completed H2 and will begin H3 from July 10, 2024, to December 13, 2024.",
+      "Continuing education: Completed H2 and will begin H3 from October 7, 2024, to December 13, 2024.",
     tech: [
       "C#",
       "Rust",
