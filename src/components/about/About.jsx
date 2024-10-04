@@ -126,7 +126,7 @@ export const About = () => {
                     </Reveal>
                     <Reveal>
                         <p className="leading-relaxed text-zinc-300">
-                            I currently don't work for any company.
+                            I am currently a apprentice for TECHCOLLEGE where I study for computer technician studying programming.
                         </p>
                     </Reveal>
                     <Reveal>
