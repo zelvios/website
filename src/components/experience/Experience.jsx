@@ -14,18 +14,50 @@ export const Experience = () => {
 
 const experience = [
   {
-    title: "Techcollege",
+    title: "TECHCOLLEGE H3",
     position: "Datatekniker Med Speciale I Programmering",
-    time: "2022 - 2026",
+    time: "07/10/2024 - 13/12/2024",
     location: "Aalborg - Denmark",
     description:
-      "Continuing education: Completed H2 and will begin H3 from October 7, 2024, to December 13, 2024.",
+        "Continuing education.",
     tech: [
       "C#",
-      "Rust",
+      "Vue",
+      "Git",
+      "GitHub",
+      "Godot",
+    ],
+  },
+  {
+    title: "TECHCOLLEGE H2",
+    position: "Datatekniker Med Speciale I Programmering",
+    time: "31/07/2023 - 06/10/2023",
+    location: "Aalborg - Denmark",
+    description:
+      "Completed H2",
+    tech: [
+      "C#",
+      "Vue",
       "Git",
       "GitHub",
       "Docker",
+      "MS SQL",
+    ],
+  },
+  {
+    title: "TECHCOLLEGE H1",
+    position: "Datatekniker Med Speciale I Programmering H1",
+    time: "27/02/2023 - 11/05/2023",
+    location: "Aalborg - Denmark",
+    description:
+        "Completed H1",
+    tech: [
+      "C#",
+      "Git",
+      "GitHub",
+      "Network",
+      "MS SQL",
+      "SQLite",
     ],
   },
 ];
