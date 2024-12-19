@@ -21,13 +21,13 @@
             </li>
             <li>
                 <a
-                        href="/about"
+                        href="/projects"
                         class="text-base p-2 rounded"
-                        class:bg-accent={isActive('/about')}
-                        class:text-base={isActive('/about')}
-                        class:text-accent={!isActive('/about')}
+                        class:bg-accent={isActive('/projects')}
+                        class:text-base={isActive('/projects')}
+                        class:text-accent={!isActive('/projects')}
                 >
-                    About
+                    Projects
                 </a>
             </li>
             <li>
@@ -39,6 +39,17 @@
                         class:text-accent={!isActive('/contact')}
                 >
                     Contact
+                </a>
+            </li>
+            <li>
+                <a
+                        href="/about"
+                        class="text-base p-2 rounded"
+                        class:bg-accent={isActive('/about')}
+                        class:text-base={isActive('/about')}
+                        class:text-accent={!isActive('/about')}
+                >
+                    About
                 </a>
             </li>
         </ul>
