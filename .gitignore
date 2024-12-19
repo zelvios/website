@@ -1,24 +1,37 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# Node modules
+node_modules/
 
-node_modules
-dist
-dist-ssr
-*.local
+# Output folders
+.output/
+.vercel/
+.netlify/
+.wrangler/
+.svelte-kit/
+build/
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# OS files
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+Thumbs.db
+
+# Environment files
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# IDE
+.idea/
+
+# Logs
+*.log
+
+# SvelteKit Adapter specific
+/.svelte-kit/
+
+# Tailwind CSS build cache (if any)
+.tailwind/
+

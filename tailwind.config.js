@@ -1,28 +1,20 @@
-const flowbitePlugin = require('flowbite/plugin');
-
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+export default {
   content: [
-    './src/**/*.{html,js,svelte,ts}',
-    './node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}'
+    "./src/**/*.{html,svelte,js,ts}",
   ],
-  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        primary: {
-          50: '#FFF5F2',
-          100: '#FFF1EE',
-          200: '#FFE4DE',
-          300: '#FFD5CC',
-          400: '#FFBCAD',
-          500: '#FE795D',
-          600: '#EF562F',
-          700: '#EB4F27',
-          800: '#CC4522',
-          900: '#A5371B'
-        }
-      }
-    }
+        base: '#303446',
+        text: '#c6d0f5',
+        surface: '#626880',
+        accent: '#f4b8e4',
+      },
+      fontFamily: {
+        sans: ['JetBrains Mono', 'monospace'],
+      },
+    },
   },
-  plugins: [flowbitePlugin]
-};
+  plugins: [],
+}
