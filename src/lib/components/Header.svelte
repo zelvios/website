@@ -41,17 +41,6 @@
                     Contact
                 </a>
             </li>
-            <li>
-                <a
-                        href="/about"
-                        class="text-base p-2 rounded"
-                        class:bg-accent={isActive('/about')}
-                        class:text-base={isActive('/about')}
-                        class:text-accent={!isActive('/about')}
-                >
-                    About
-                </a>
-            </li>
         </ul>
     </nav>
 </header>
