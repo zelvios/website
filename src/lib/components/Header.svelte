@@ -5,7 +5,7 @@
     }
 </script>
 
-<header class="bg-background text-text p-6 shadow-md flex flex-col justify-between h-[20vh]">
+<header class="bg-background text-text p-6 shadow-md flex flex-col items-center justify-between h-[20vh]">
     <nav class="mt-4 text-center">
         <ul class="flex justify-center gap-6 flex-wrap">
             <li>
