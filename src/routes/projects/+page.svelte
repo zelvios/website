@@ -6,7 +6,7 @@
     let loading = true;
     let error = null;
     let currentPage = 1;
-    const projectsPerPage = 6;
+    const projectsPerPage = 3;
 
     // Fetch repositories from GitHub
     const fetchProjects = async () => {
@@ -55,7 +55,7 @@
 
 <main class="text-text p-8">
     <button
-            class="mb-4 py-2 px-4 bg-accent text-black rounded-lg hover:bg-opacity-80 transition-colors block mx-auto"
+            class="mb-20 py-2 px-2 bg-accent text-black rounded-lg hover:bg-opacity-80 transition-colors block mx-auto"
             on:click={() => showGitHubProjects = !showGitHubProjects}
     >
         {showGitHubProjects ? 'Show Fewer Projects' : 'View all Projects'}
@@ -67,10 +67,31 @@
         {:else if error}
             <p class="text-center text-lg text-red-500">{error}</p>
         {:else}
+            <!-- Pages (GitHub Projects) -->
+            <div class="flex justify-center items-center -mt-16 min-h-[60px] mb-12">
+                <button
+                        on:click={() => paginate('prev')}
+                        class="py-1 px-2 bg-accent text-black rounded-lg hover:bg-opacity-80 transition-colors {currentPage === 1 ? 'bg-gray-400 text-gray-700' : 'bg-text-accent'} text-sm"
+                        disabled={currentPage === 1}
+                >
+                    Previous
+                </button>
+                <span class="mx-2 text-lg">
+                    Page {currentPage} of {totalPages}
+                </span>
+                <button
+                        on:click={() => paginate('next')}
+                        class="py-1 px-2 bg-accent text-black rounded-lg hover:bg-opacity-80 transition-colors {currentPage === totalPages ? 'bg-gray-400 text-gray-700' : 'bg-text-accent'} text-sm"
+                        disabled={currentPage === totalPages}
+                >
+                    Next
+                </button>
+            </div>
+
             <!-- Github Project Card Design -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-6 max-w-screen-lg mx-auto">
                 {#each getCurrentProjects() as project}
-                    <div class="flex flex-col items-start space-y-2 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto">
+                    <div class="flex flex-col items-start space-y-3 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto">
                         <a href={project.html_url} target="_blank">
                             <img
                                     src={`https://raw.githubusercontent.com/Zelvios/${project.name}/main/screenshots/design.png`}
@@ -79,15 +100,15 @@
                                     on:error={handleImageError}
                             />
                         </a>
-                        <h2 class="text-lg font-semibold text-accent text-left w-full flex items-center">
+                        <h2 class="text-lg font-semibold text-accent text-left w-full flex items-center space-x-2">
                             <span>{project.name}</span>
                             <span class="line"></span>
                         </h2>
                         <p class="text-xs text-left w-full">
                             {#if project.language}
-        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-gray-700 rounded-md">
-          {project.language}
-        </span>
+                                <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-gray-700 rounded-md">
+                                    {project.language}
+                                </span>
                             {/if}
                         </p>
                         <p class="text-sm text-text text-left w-full">
@@ -110,31 +131,10 @@
                     </div>
                 {/each}
             </div>
-
-            <!-- Pages (GitHub Projects) -->
-            <div class="flex justify-center items-center mt-6">
-                <button
-                        on:click={() => paginate('prev')}
-                        class="py-2 px-3 bg-accent text-black rounded-lg hover:bg-opacity-80 transition-colors {currentPage === 1 ? 'bg-gray-400 text-gray-700' : 'bg-text-accent'} text-sm"
-                        disabled={currentPage === 1}
-                >
-                    Previous
-                </button>
-                <span class="mx-3 text-lg">
-					Page {currentPage} of {totalPages}
-				</span>
-                <button
-                        on:click={() => paginate('next')}
-                        class="py-2 px-3 bg-accent text-black rounded-lg hover:bg-opacity-80 transition-colors {currentPage === totalPages ? 'bg-gray-400 text-gray-700' : 'bg-text-accent'} text-sm"
-                        disabled={currentPage === totalPages}
-                >
-                    Next
-                </button>
-            </div>
         {/if}
     {:else}
         <!-- Static Project -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-24 max-w-screen-lg mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-screen-lg mx-auto">
             <!-- Static Project 1 -->
             <div class="flex flex-col items-start space-y-3 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto">
                 <a href="https://github.com/Zelvios/todo-tui" target="_blank">
