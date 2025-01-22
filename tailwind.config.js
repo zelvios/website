@@ -9,7 +9,7 @@ export default {
         base: '#303446',
         text: '#c6d0f5',
         surface: '#626880',
-        accent: '#f4b8e4',
+        accent: 'var(--accent-color)',
       },
       fontFamily: {
         sans: ['JetBrains Mono', 'monospace'],
