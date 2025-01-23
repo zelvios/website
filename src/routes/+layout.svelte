@@ -10,6 +10,14 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Jacob Portfolio</title>
+	<meta name="description" content="A portfolio created to showcase expertise in web development, design, and programming." />
+	<meta property="og:title" content="Jacob Portfolio" />
+	<meta property="og:description" content="A portfolio created to showcase expertise in web development, design, and programming." />
+	<meta property="og:url" content="https://jacob-j.com" />
+</svelte:head>
+
 <main class="min-h-screen bg-base flex flex-col">
 	<div class="flex-grow">
 		<slot />
