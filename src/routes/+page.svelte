@@ -1,16 +1,29 @@
 <script>
     import { accentColor } from '../stores';
-    const colors = ['#f4b8e4', '#7287fd', '#df8e1d', '#ff1493'];
-    let currentColor = colors[0];
+    import { onMount } from 'svelte';
+
+    const colors = ['#7287fd', '#df8e1d', '#ff1493', '#f4b8e4'];
+
+    let currentColor;
+
+    onMount(() => {
+        currentColor = $accentColor || colors[0];
+        document.documentElement.style.setProperty('--accent-color', currentColor);
+    });
 
     const changeAccentColor = () => {
         const currentIndex = colors.indexOf(currentColor);
         const nextColor = colors[(currentIndex + 1) % colors.length];
+
         accentColor.set(nextColor);
+
         document.documentElement.style.setProperty('--accent-color', nextColor);
+
         currentColor = nextColor;
     };
 </script>
+
+
 
 <main class="text-text p-8">
     <div class="flex flex-col sm:flex-row items-center justify-center space-y-40 sm:space-x-40 sm:space-y-0 mt-[30vh]">
@@ -62,7 +75,7 @@
 <style>
     .colorbtn {
         align-items: center;
-        background-image: linear-gradient(144deg, #f4b8e4, #ff6347);
+        background-image: linear-gradient(144deg, #f4b8e4, #7287fd);
         border: 0;
         border-radius: 6px;
         box-shadow: rgba(151, 65, 252, 0.15) 0 10px 20px -5px;
