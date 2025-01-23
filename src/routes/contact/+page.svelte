@@ -1,5 +1,5 @@
 <main class="text-text p-6">
-	<div class="flex flex-col items-center justify-center space-y-6 mt-[20vh] max-w-lg mx-auto">
+	<div class="flex flex-col items-center justify-center space-y-6 mt-[20vh] max-w-lg mx-auto fade-in">
 		<h1 class="text-3xl font-bold text-accent text-center">Contact</h1>
 		<p class="text-base text-text text-center">
 			Feel free to reach out to me through any of the channels below.
@@ -7,7 +7,7 @@
 	</div>
 
 	<!-- Socials Section -->
-	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-12 max-w-lg mx-auto">
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-12 max-w-lg mx-auto fade-in">
 
 		<!-- Mail -->
 		<div class="flex flex-col items-center space-y-3">
@@ -36,3 +36,20 @@
 		</div>
 	</div>
 </main>
+
+<style>
+	.fade-in {
+		animation: fadeIn 1s ease-out;
+	}
+
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+</style>

@@ -23,13 +23,11 @@
     };
 </script>
 
-
-
 <main class="text-text p-8">
     <div class="flex flex-col sm:flex-row items-center justify-center space-y-40 sm:space-x-40 sm:space-y-0 mt-[30vh]">
 
         <!-- Left column: Title and Undertitle -->
-        <div class="w-auto text-center sm:text-left mt-[-10vh]">
+        <div class="w-auto text-center sm:text-left mt-[-10vh] fade-in">
             <h1 class="text-4xl font-bold text-accent">
                 Jacob Jørgensen
             </h1>
@@ -53,7 +51,7 @@
         </div>
 
         <!-- Right column: Information text container -->
-        <div class="w-auto sm:max-w-[20%] sm:mx-auto">
+        <div class="w-auto sm:max-w-[20%] sm:mx-auto fade-in">
             <h2 class="text-base font-semibold text-text mb-4"><span class="text-accent">$</span> cat about_me</h2>
 
             <p class="text-base text-text text-left">
@@ -68,80 +66,93 @@
                 Linux Rust C# SQL
             </p>
         </div>
-
     </div>
 </main>
 
-<style>
+<style>.fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.colorbtn {
+    align-items: center;
+    background-image: linear-gradient(144deg, #f4b8e4, #7287fd);
+    border: 0;
+    border-radius: 6px;
+    box-shadow: rgba(151, 65, 252, 0.15) 0 10px 20px -5px;
+    box-sizing: border-box;
+    color: theme('colors.text');
+    display: flex;
+    font-size: 9px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 100px;
+    padding: 4px 4px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.colorbtn:active,
+.colorbtn:hover {
+    outline: 0;
+}
+
+.colorbtn span {
+    background-color: rgb(5, 6, 45);
+    padding: 8px 14px;
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    transition: 300ms;
+}
+
+.colorbtn:hover span {
+    background: none;
+}
+
+@media (min-width: 768px) {
     .colorbtn {
-        align-items: center;
-        background-image: linear-gradient(144deg, #f4b8e4, #7287fd);
-        border: 0;
-        border-radius: 6px;
-        box-shadow: rgba(151, 65, 252, 0.15) 0 10px 20px -5px;
-        box-sizing: border-box;
-        color: theme('colors.text');
-        display: flex;
-        font-size: 9px;
-        justify-content: center;
-        line-height: 1em;
-        max-width: 100%;
-        min-width: 100px;
-        padding: 4px 4px;
-        text-decoration: none;
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
-        white-space: nowrap;
-        cursor: pointer;
+        font-size: 16px;
+        min-width: 120px;
     }
+}
 
-    .colorbtn:active,
-    .colorbtn:hover {
-        outline: 0;
-    }
+.underline-link {
+    position: relative;
+    display: inline-block;
+    color: inherit;
+}
 
-    .colorbtn span {
-        background-color: rgb(5, 6, 45);
-        padding: 8px 14px;
-        border-radius: 6px;
-        width: 100%;
-        height: 100%;
-        transition: 300ms;
-    }
+.underline-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: all 0.5s ease;
+    transform: translateX(-50%);
+}
 
-    .colorbtn:hover span {
-        background: none;
-    }
-
-    @media (min-width: 768px) {
-        .colorbtn {
-            font-size: 16px;
-            min-width: 120px;
-        }
-    }
-
-    .underline-link {
-        position: relative;
-        display: inline-block;
-        color: inherit;
-    }
-
-    .underline-link::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 2px;
-        background-color: currentColor;
-        transition: all 0.5s ease;
-        transform: translateX(-50%);
-    }
-
-    .underline-link:hover::after {
-        width: 100%;
-        left: 0;
-        transform: translateX(0);
-    }
+.underline-link:hover::after {
+    width: 100%;
+    left: 0;
+    transform: translateX(0);
+}
 </style>

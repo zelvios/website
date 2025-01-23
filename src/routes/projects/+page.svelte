@@ -40,7 +40,6 @@
         return projects.slice(startIndex, endIndex);
     };
 
-    // Calculate total pages after fetching projects
     $: totalPages = Math.ceil(projects.length / projectsPerPage);
 
     onMount(() => {
@@ -89,7 +88,7 @@
             </div>
 
             <!-- Github Project Card Design -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-6 max-w-screen-lg mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-6 max-w-screen-lg mx-auto fade-in">
                 {#each getCurrentProjects() as project}
                     <div class="flex flex-col items-start space-y-3 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto">
                         <a href={project.html_url} target="_blank">
@@ -134,7 +133,7 @@
         {/if}
     {:else}
         <!-- Static Project -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-screen-lg mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-screen-lg mx-auto fade-in">
             <!-- Static Project 1 -->
             <div class="flex flex-col items-start space-y-3 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto">
                 <a href="https://github.com/Zelvios/todo-tui" target="_blank">
@@ -199,6 +198,21 @@
 </main>
 
 <style>
+    .fade-in {
+        animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
     .project-image {
         transition: transform 0.3s ease, filter 0.3s ease;
     }
