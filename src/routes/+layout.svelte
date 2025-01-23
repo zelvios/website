@@ -11,9 +11,9 @@
 </script>
 
 <svelte:head>
-	<title>Jacob Portfolio</title>
+	<title>Jacob-J • Portfolio</title>
 	<meta name="description" content="A portfolio created to showcase expertise in web development, design, and programming." />
-	<meta property="og:title" content="Jacob Portfolio" />
+	<meta property="og:title" content="Jacob-J • Portfolio" />
 	<meta property="og:description" content="A portfolio created to showcase expertise in web development, design, and programming." />
 	<meta property="og:url" content="https://jacob-j.com" />
 </svelte:head>
