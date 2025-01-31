@@ -8,7 +8,14 @@
     let currentPage = 1;
     const projectsPerPage = 3;
 
-    // Fetch repositories from GitHub
+    const staticProjects = [
+        'dotfiles',
+        'todo-tui',
+        'BashControlCenter'
+    ];
+
+    let staticProjectData = [];
+
     const fetchProjects = async () => {
         try {
             const response = await fetch('https://api.github.com/users/Zelvios/repos');
@@ -17,6 +24,12 @@
             }
             const data = await response.json();
             projects = data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+            staticProjectData = staticProjects
+                .map(projectName =>
+                    projects.find(project => project.name === projectName)
+                )
+                .filter(project => project !== undefined);
         } catch (err) {
             error = err.message;
         } finally {
@@ -24,7 +37,6 @@
         }
     };
 
-    // Handle the change after changing Page
     const paginate = (direction) => {
         if (direction === 'next') {
             if (currentPage < totalPages) currentPage += 1;
@@ -33,7 +45,6 @@
         }
     };
 
-    // Get the projects for the current page
     const getCurrentProjects = () => {
         const startIndex = (currentPage - 1) * projectsPerPage;
         const endIndex = startIndex + projectsPerPage;
@@ -46,19 +57,22 @@
         fetchProjects();
     });
 
-    // Error handler for images
     function handleImageError(event) {
         event.target.src = 'https://avatars.githubusercontent.com/u/0?v=4';
     }
 </script>
 
 <main class="text-text p-8">
-    <button
-            class="mb-20 py-2 px-2 bg-accent text-black rounded-lg hover:bg-opacity-80 transition-colors block mx-auto"
-            on:click={() => showGitHubProjects = !showGitHubProjects}
-    >
-        {showGitHubProjects ? 'Show Fewer Projects' : 'View all Projects'}
-    </button>
+    <div class="flex justify-center mb-8">
+        <button
+                class="bg-base text-text border border-accent border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md
+        hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group"
+                on:click={() => showGitHubProjects = !showGitHubProjects}
+        >
+            <span class="bg-accent shadow-accent absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
+            {showGitHubProjects ? 'Show Fewer Projects' : 'View all Projects'}
+        </button>
+    </div>
 
     {#if showGitHubProjects}
         {#if loading}
@@ -66,8 +80,7 @@
         {:else if error}
             <p class="text-center text-lg text-red-500">{error}</p>
         {:else}
-            <!-- Pages (GitHub Projects) -->
-            <div class="flex justify-center items-center -mt-16 min-h-[60px] mb-12">
+            <div class="flex justify-center items-center mb-12 space-x-4">
                 <button
                         on:click={() => paginate('prev')}
                         class="py-1 px-2 bg-accent text-black rounded-lg hover:bg-opacity-80 transition-colors {currentPage === 1 ? 'bg-gray-400 text-gray-700' : 'bg-text-accent'} text-sm"
@@ -113,7 +126,6 @@
                         <p class="text-sm text-text text-left w-full">
                             {project.description || 'No description available'}
                         </p>
-
                         <p class="text-xs text-left w-full leading-tight">
                             <span class="text-accent">- Created on:</span>
                             <span class="text-text">{new Date(project.created_at).toLocaleDateString()}</span>
@@ -132,67 +144,48 @@
             </div>
         {/if}
     {:else}
-        <!-- Static Project -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-screen-lg mx-auto fade-in">
-            <!-- Static Project 1 -->
-            <div class="flex flex-col items-start space-y-3 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto">
-                <a href="https://github.com/Zelvios/todo-tui" target="_blank">
-                    <img src="src/lib/images/todo-tui.png" alt="no image"
-                         class="project-image w-full h-40 object-cover rounded-t-lg transition-all duration-300">
-                </a>
-                <h2 class="text-lg font-semibold text-accent text-left w-full flex items-center space-x-2">
-                    <span>Todo-TUI</span>
-                    <span class="line"></span>
-                </h2>
-                <p class="text-xs text-left w-full">
-                    <a href="https://www.rust-lang.org/" target="_blank"
-                       class="inline-block px-2 py-1 text-xs font-semibold text-white bg-gray-700 rounded-md hover:text-accent hover:bg-gray-600 transition-colors">
-                        Rust
+        <!-- Pinned Project -->
+        <div class={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-screen-lg mx-auto fade-in
+            ${staticProjectData.length <= 2 ? 'justify-center' : ''}`}>
+            {#each staticProjectData as project}
+                <div class="flex flex-col items-start space-y-3 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto">
+                    <a href={project.html_url} target="_blank">
+                        <img
+                                src={`https://raw.githubusercontent.com/Zelvios/${project.name}/main/screenshots/design.png`}
+                                alt="Project Image"
+                                class="project-image w-full h-40 object-cover rounded-t-lg transition-all duration-300"
+                                on:error={handleImageError}
+                        />
                     </a>
-                    <a href="https://ratatui.rs/" target="_blank"
-                       class="inline-block px-2 py-1 text-xs font-semibold text-white bg-gray-700 rounded-md ml-1 hover:text-accent hover:bg-gray-600 transition-colors">
-                        Ratatui
-                    </a>
-                </p>
-                <p class="text-sm text-text text-left w-full">
-                    A simple terminal-based To-Do app built in rust using the ratatui library for creating a text-based
-                    user interface.
-                </p>
-                <div class="flex items-center space-x-2 mt-4 w-full">
-                    <a href="https://github.com/Zelvios/todo-tui" target="_blank"
-                       class="text-accent hover:text-accent-dark">
-                        <img src="src/lib/images/github.svg" alt="GitHub" class="w-5 h-5">
-                    </a>
-                    <a href="https://github.com/Zelvios/todo-tui" target="_blank"
-                       class="text-sm text-text underline hover:text-accent">
-                        Source code
-                    </a>
+                    <h2 class="text-lg font-semibold text-accent text-left w-full flex items-center space-x-2">
+                        <span>{project.name}</span>
+                        <span class="line"></span>
+                    </h2>
+                    <p class="text-xs text-left w-full">
+                        {#if project.language}
+                        <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-gray-700 rounded-md">
+                            {project.language}
+                        </span>
+                        {/if}
+                    </p>
+                    <p class="text-sm text-text text-left w-full">
+                        {project.description || 'No description available'}
+                    </p>
+                    <p class="text-xs text-left w-full leading-tight">
+                        <span class="text-accent">- Created on:</span>
+                        <span class="text-text">{new Date(project.created_at).toLocaleDateString()}</span>
+                    </p>
+
+                    <div class="flex items-center space-x-2 mt-4 w-full">
+                        <a href={project.html_url} target="_blank" class="text-accent hover:text-accent-dark">
+                            <img src="src/lib/images/github.svg" alt="GitHub" class="w-5 h-5">
+                        </a>
+                        <a href={project.html_url} target="_blank" class="text-sm text-text underline hover:text-accent">
+                            View Repository
+                        </a>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Static Project 2 -->
-            <div class="flex flex-col items-center space-y-3 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto">
-                <img src="src/images/project2.jpg" alt="no image" class="w-full h-40 object-cover rounded-t-lg">
-                <h2 class="text-lg font-semibold text-accent text-left w-full flex items-center space-x-2">
-                    <span>Project 2</span>
-                    <span class="line"></span>
-                </h2>
-                <p class="text-sm text-text text-left w-full">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet vulputate nibh.
-                </p>
-            </div>
-
-            <!-- Static Project 3 -->
-            <div class="flex flex-col items-center space-y-3 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto">
-                <img src="src/images/project3.jpg" alt="no image" class="w-full h-40 object-cover rounded-t-lg">
-                <h2 class="text-lg font-semibold text-accent text-left w-full flex items-center space-x-2">
-                    <span>Project 3</span>
-                    <span class="line"></span>
-                </h2>
-                <p class="text-sm text-text text-left w-full">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sit amet vulputate nibh.
-                </p>
-            </div>
+            {/each}
         </div>
     {/if}
 </main>
