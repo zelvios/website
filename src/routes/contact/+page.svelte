@@ -23,7 +23,7 @@
 		<div class="flex flex-col items-center space-y-3">
 			<h2 class="text-lg font-semibold text-accent text-center">GitHub</h2>
 			<p class="text-sm text-text text-center max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
-				<a href="https://github.com/Zelvios" class="text-text underline hover:text-accent">Zelvios</a>
+				<a href="https://github.com/zelvios" class="text-text underline hover:text-accent">zelvios</a>
 			</p>
 		</div>
 
