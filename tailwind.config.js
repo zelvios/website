@@ -6,10 +6,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        base: '#303446',
-        text: '#c6d0f5',
+        base: '#1e1e2e',
+        text: '#cdd6f4',
         surface: '#626880',
-        accent: 'var(--accent-color)',
+        accent: '#f38ba8',
       },
       fontFamily: {
         sans: ['JetBrains Mono', 'monospace'],

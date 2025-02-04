@@ -1,26 +1,5 @@
 <script>
-    import { accentColor } from '../stores';
-    import { onMount } from 'svelte';
 
-    const colors = ['#7287fd', '#df8e1d', '#ff1493', '#f4b8e4'];
-
-    let currentColor;
-
-    onMount(() => {
-        currentColor = $accentColor || colors[0];
-        document.documentElement.style.setProperty('--accent-color', currentColor);
-    });
-
-    const changeAccentColor = () => {
-        const currentIndex = colors.indexOf(currentColor);
-        const nextColor = colors[(currentIndex + 1) % colors.length];
-
-        accentColor.set(nextColor);
-
-        document.documentElement.style.setProperty('--accent-color', nextColor);
-
-        currentColor = nextColor;
-    };
 </script>
 
 <main class="text-text p-8">
@@ -39,14 +18,7 @@
             </p>
 
             <div class="mt-6 flex justify-center">
-                <button
-                        class="colorbtn"
-                        role="button"
-                        on:click={changeAccentColor}
-                        style="background-image: linear-gradient(144deg, {currentColor}, {colors[(colors.indexOf(currentColor) + 1) % colors.length]})"
-                >
-                    <span class="text">Change Main Color</span>
-                </button>
+
             </div>
         </div>
 
@@ -81,54 +53,6 @@
     100% {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-.colorbtn {
-    align-items: center;
-    background-image: linear-gradient(144deg, #f4b8e4, #7287fd);
-    border: 0;
-    border-radius: 6px;
-    box-shadow: rgba(151, 65, 252, 0.15) 0 10px 20px -5px;
-    box-sizing: border-box;
-    color: theme('colors.text');
-    display: flex;
-    font-size: 9px;
-    justify-content: center;
-    line-height: 1em;
-    max-width: 100%;
-    min-width: 100px;
-    padding: 4px 4px;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    white-space: nowrap;
-    cursor: pointer;
-}
-
-.colorbtn:active,
-.colorbtn:hover {
-    outline: 0;
-}
-
-.colorbtn span {
-    background-color: rgb(5, 6, 45);
-    padding: 8px 14px;
-    border-radius: 6px;
-    width: 100%;
-    height: 100%;
-    transition: 300ms;
-}
-
-.colorbtn:hover span {
-    background: none;
-}
-
-@media (min-width: 768px) {
-    .colorbtn {
-        font-size: 16px;
-        min-width: 120px;
     }
 }
 
