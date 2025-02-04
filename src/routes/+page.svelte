@@ -19,7 +19,7 @@
 
         <!-- Right column: Information text container -->
         <div class="w-auto sm:max-w-[20%] sm:mx-auto fade-in">
-            <h2 class="text-base font-semibold text-text mb-4"><span class="text-accent">$</span> cat about_me</h2>
+            <h2 class="text-base font-semibold text-text mb-4"><span class="text-accent">♦</span> About Me</h2>
 
             <p class="text-base text-text text-left">
                 I'm a student at TECHCOLLEGE for programming where I specialize in the backend, primarily Rust, but love building with whatever tools are right for the job.
@@ -27,51 +27,58 @@
 
             <div class="mt-8"></div>
 
-            <h2 class="text-base font-semibold text-text mb-4"><span class="text-accent">$</span> ls ~/skills</h2>
+            <h2 class="text-base font-semibold text-text mb-4"><span class="text-accent">♦</span> Skills</h2>
 
-            <p class="text-base text-text text-left">
-                Linux Rust C# SQL
-            </p>
+            <div class="flex flex-wrap gap-3">
+                <span class="bg-surface1 text-text rounded-full py-0.5 px-2 text-sm font-medium">Rust</span>
+                <span class="bg-surface1 text-text rounded-full py-0.5 px-2 text-sm font-medium">C</span>
+                <span class="bg-surface1 text-text rounded-full py-0.5 px-2 text-sm font-medium">C#</span>
+                <span class="bg-surface1 text-text rounded-full py-0.5 px-2 text-sm font-medium">Kotlin</span>
+                <span class="bg-surface1 text-text rounded-full py-0.5 px-2 text-sm font-medium">JavaScript</span>
+                <span class="bg-surface1 text-text rounded-full py-0.5 px-2 text-sm font-medium">HTML</span>
+                <span class="bg-surface1 text-text rounded-full py-0.5 px-2 text-sm font-medium">CSS</span>
+            </div>
         </div>
     </div>
 </main>
 
-<style>.fade-in {
-    animation: fadeIn 1s ease-out;
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
+<style>
+    .fade-in {
+        animation: fadeIn 1s ease-out;
     }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-}
 
-.underline-link {
-    position: relative;
-    display: inline-block;
-    color: inherit;
-}
+    .underline-link {
+        position: relative;
+        display: inline-block;
+        color: inherit;
+    }
 
-.underline-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background-color: currentColor;
-    transition: all 0.5s ease;
-    transform: translateX(-50%);
-}
+    .underline-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: currentColor;
+        transition: all 0.5s ease;
+        transform: translateX(-50%);
+    }
 
-.underline-link:hover::after {
-    width: 100%;
-    left: 0;
-    transform: translateX(0);
-}
+    .underline-link:hover::after {
+        width: 100%;
+        left: 0;
+        transform: translateX(0);
+    }
 </style>
