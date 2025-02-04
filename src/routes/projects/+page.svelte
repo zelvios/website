@@ -62,46 +62,15 @@
     }
 </script>
 
-<main class="text-text p-8">
-    <div class="flex justify-center mb-8">
-        <button
-                class="bg-base text-text border border-accent border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md
-        hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group"
-                on:click={() => showGitHubProjects = !showGitHubProjects}
-        >
-            <span class="bg-accent shadow-accent absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
-            {showGitHubProjects ? 'Show Fewer Projects' : 'View all Projects'}
-        </button>
-    </div>
-
+<main class="text-text p-8 flex flex-col">
     {#if showGitHubProjects}
         {#if loading}
             <p class="text-center text-lg text-accent">Loading projects...</p>
         {:else if error}
             <p class="text-center text-lg text-red-500">{error}</p>
         {:else}
-            <div class="flex justify-center items-center mb-12 space-x-4">
-                <button
-                        on:click={() => paginate('prev')}
-                        class="py-1 px-2 bg-accent text-black rounded-lg hover:bg-opacity-80 transition-colors {currentPage === 1 ? 'bg-gray-400 text-gray-700' : 'bg-text-accent'} text-sm"
-                        disabled={currentPage === 1}
-                >
-                    Previous
-                </button>
-                <span class="mx-2 text-lg">
-                    Page {currentPage} of {totalPages}
-                </span>
-                <button
-                        on:click={() => paginate('next')}
-                        class="py-1 px-2 bg-accent text-black rounded-lg hover:bg-opacity-80 transition-colors {currentPage === totalPages ? 'bg-gray-400 text-gray-700' : 'bg-text-accent'} text-sm"
-                        disabled={currentPage === totalPages}
-                >
-                    Next
-                </button>
-            </div>
-
             <!-- Github Project Card Design -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-6 max-w-screen-lg mx-auto fade-in">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-10 max-w-screen-lg mx-auto fade-in">
                 {#each getCurrentProjects() as project}
                     <div class="flex flex-col items-start space-y-3 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto">
                         <a href={project.html_url} target="_blank">
@@ -142,10 +111,29 @@
                     </div>
                 {/each}
             </div>
+            <div class="flex justify-center items-center mb-12 space-x-4 mt-12">
+                <button
+                        on:click={() => paginate('prev')}
+                        class="py-1 px-2 bg-accent text-black rounded-lg hover:bg-opacity-80 transition-colors {currentPage === 1 ? 'bg-gray-400 text-gray-700' : 'bg-text-accent'} text-sm"
+                        disabled={currentPage === 1}
+                >
+                    Previous
+                </button>
+                <span class="mx-2 text-lg">
+                    Page {currentPage} of {totalPages}
+                </span>
+                <button
+                        on:click={() => paginate('next')}
+                        class="py-1 px-2 bg-accent text-black rounded-lg hover:bg-opacity-80 transition-colors {currentPage === totalPages ? 'bg-gray-400 text-gray-700' : 'bg-text-accent'} text-sm"
+                        disabled={currentPage === totalPages}
+                >
+                    Next
+                </button>
+            </div>
         {/if}
     {:else}
         <!-- Pinned Project -->
-        <div class={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-screen-lg mx-auto fade-in
+        <div class={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-screen-lg mx-auto fade-in mb-16 mt-10
             ${staticProjectData.length <= 2 ? 'justify-center' : ''}`}>
             {#each staticProjectData as project}
                 <div class="flex flex-col items-start space-y-3 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto">
@@ -188,6 +176,17 @@
             {/each}
         </div>
     {/if}
+
+    <div class="flex justify-center mb-8 mt-auto mt-8">
+        <button
+                class="bg-base text-text border border-accent border-b-4 font-medium overflow-hidden relative px-8 py-2 rounded-md
+        hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group"
+                on:click={() => showGitHubProjects = !showGitHubProjects}
+        >
+            <span class="bg-accent shadow-accent absolute -top-[150%] left-0 inline-flex w-full h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
+            {showGitHubProjects ? 'Show Fewer Projects' : 'View all Projects'}
+        </button>
+    </div>
 </main>
 
 <style>
