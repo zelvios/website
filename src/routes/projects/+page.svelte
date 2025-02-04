@@ -102,7 +102,7 @@
 
                         <div class="flex items-center space-x-2 mt-4 w-full">
                             <a href={project.html_url} target="_blank" class="text-accent hover:text-accent-dark">
-                                <img src="src/lib/images/github.svg" alt="GitHub" class="w-5 h-5">
+                                <img src="src/lib/images/github.png" alt="GitHub" class="w-5 h-5">
                             </a>
                             <a href={project.html_url} target="_blank" class="text-sm text-text underline hover:text-accent">
                                 View Repository
@@ -166,7 +166,7 @@
 
                     <div class="flex items-center space-x-2 mt-4 w-full">
                         <a href={project.html_url} target="_blank" class="text-accent hover:text-accent-dark">
-                            <img src="src/lib/images/github.svg" alt="GitHub" class="w-5 h-5">
+                            <img src="src/lib/images/github.png" alt="GitHub" class="w-5 h-5">
                         </a>
                         <a href={project.html_url} target="_blank" class="text-sm text-text underline hover:text-accent">
                             View Repository
