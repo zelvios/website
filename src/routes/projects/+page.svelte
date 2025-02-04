@@ -6,7 +6,7 @@
     let loading = true;
     let error = null;
     let currentPage = 1;
-    const projectsPerPage = 3;
+    const projectsPerPage = 6;
 
     const staticProjects = [
         'dotfiles',
