@@ -1,12 +1,8 @@
-<script>
-
-</script>
-
 <main class="text-text p-8">
-    <div class="flex flex-col sm:flex-row items-center justify-center space-y-40 sm:space-x-40 sm:space-y-0 mt-[30vh]">
+    <div class="flex flex-col sm:flex-row items-center justify-center space-y-16 sm:space-x-40 sm:space-y-0 mt-[20vh]">
 
         <!-- Left column: Title and Undertitle -->
-        <div class="w-auto text-center sm:text-left mt-[-10vh] fade-in">
+        <div class="w-auto text-center sm:text-left mt-[-15vh] sm:mt-0 fade-in">
             <h1 class="text-4xl font-bold text-accent">
                 Jacob Jørgensen
             </h1>
@@ -18,7 +14,6 @@
             </p>
 
             <div class="mt-6 flex justify-center">
-
             </div>
         </div>
 
