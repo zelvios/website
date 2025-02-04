@@ -1,5 +1,5 @@
-<main class="text-text p-6">
-	<div class="flex flex-col items-center justify-center space-y-6 mt-[20vh] max-w-lg mx-auto fade-in">
+<main class="text-text p-6 ">
+	<div class="flex flex-col items-center justify-center space-y-6 mt-20 max-w-lg mx-auto fade-in">
 		<h1 class="text-3xl font-bold text-accent text-center">Contact</h1>
 		<p class="text-base text-text text-center">
 			Feel free to reach out to me through any of the channels below.
@@ -11,7 +11,7 @@
 
 		<!-- Mail -->
 		<div class="flex flex-col items-center space-y-3">
-			<h2 class="text-lg font-semibold text-accent text-center">Mail</h2>
+			<h2 class="text-lg font-semibold text-accent text-center">Email</h2>
 			<p class="text-sm text-text text-center max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg whitespace-nowrap">
 				<a href="mailto:contact@jacob-j.com?subject=Hello Jacob&body=Hi Jacob,%0A%0A" class="text-text underline hover:text-accent">
 					contact@jacob-j.com
