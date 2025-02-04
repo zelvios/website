@@ -18,7 +18,7 @@
 	<meta property="og:url" content="https://jacob-j.com" />
 </svelte:head>
 
-<main class="min-h-screen bg-base flex flex-col">
+<main class="min-h-screen bg-base flex flex-col pb-[15vh]">
 	<div class="flex-grow">
 		<slot />
 	</div>
