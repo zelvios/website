@@ -82,14 +82,16 @@
                             />
                         </a>
                         <h2 class="text-lg font-semibold text-accent text-left w-full flex items-center space-x-2">
-                            <span>{project.name}</span>
+                            <a href={project.html_url} target="_blank">
+                                <span>{project.name}</span>
+                            </a>
                             <span class="line"></span>
                         </h2>
                         <p class="text-xs text-left w-full">
                             {#if project.language}
-                                <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-gray-700 rounded-md">
-                                    {project.language}
-                                </span>
+                <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-gray-700 rounded-md">
+                    {project.language}
+                </span>
                             {/if}
                         </p>
                         <p class="text-sm text-text text-left w-full">
@@ -102,7 +104,9 @@
 
                         <div class="flex items-center space-x-2 mt-4 w-full">
                             <a href={project.html_url} target="_blank" class="text-accent hover:text-accent-dark">
-                                <img src="src/lib/images/github.png" alt="GitHub" class="w-5 h-5">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.55 5.47 7.61.4.07.55-.17.55-.39 0-.19-.01-.69-.02-1.35-2.23.48-2.69-.54-2.69-.54-.36-.91-.88-1.15-.88-1.15-.72-.5.06-.49.06-.49 1.01.07 1.54 1.04 1.54 1.04 1.05 1.77 2.75 1.26 3.42.96.11-.77.41-1.26.75-1.55-1.56-.18-3.19-.78-3.19-3.47 0-.76.27-1.38.73-1.87-.07-.18-.32-.93.07-1.94 0 0 .58-.19 1.89.73.55-.15 1.14-.23 1.73-.23s1.18.08 1.73.23c1.31-.92 1.89-.73 1.89-.73.39 1.01.14 1.76.07 1.94.46.49.73 1.11.73 1.87 0 2.7-1.63 3.29-3.19 3.47.42.36.8 1.09.8 2.19 0 1.58-.02 2.86-.02 3.24 0 .22.15.46.55.39C13.71 14.55 16 11.54 16 8c0-4.42-3.58-8-8-8z"/>
+                                </svg>
                             </a>
                             <a href={project.html_url} target="_blank" class="text-sm text-text underline hover:text-accent">
                                 View Repository
@@ -146,7 +150,9 @@
                         />
                     </a>
                     <h2 class="text-lg font-semibold text-accent text-left w-full flex items-center space-x-2">
-                        <span>{project.name}</span>
+                        <a href={project.html_url} target="_blank">
+                            <span>{project.name}</span>
+                        </a>
                         <span class="line"></span>
                     </h2>
                     <p class="text-xs text-left w-full">
@@ -166,7 +172,9 @@
 
                     <div class="flex items-center space-x-2 mt-4 w-full">
                         <a href={project.html_url} target="_blank" class="text-accent hover:text-accent-dark">
-                            <img src="src/lib/images/github.png" alt="GitHub" class="w-5 h-5">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.55 5.47 7.61.4.07.55-.17.55-.39 0-.19-.01-.69-.02-1.35-2.23.48-2.69-.54-2.69-.54-.36-.91-.88-1.15-.88-1.15-.72-.5.06-.49.06-.49 1.01.07 1.54 1.04 1.54 1.04 1.05 1.77 2.75 1.26 3.42.96.11-.77.41-1.26.75-1.55-1.56-.18-3.19-.78-3.19-3.47 0-.76.27-1.38.73-1.87-.07-.18-.32-.93.07-1.94 0 0 .58-.19 1.89.73.55-.15 1.14-.23 1.73-.23s1.18.08 1.73.23c1.31-.92 1.89-.73 1.89-.73.39 1.01.14 1.76.07 1.94.46.49.73 1.11.73 1.87 0 2.7-1.63 3.29-3.19 3.47.42.36.8 1.09.8 2.19 0 1.58-.02 2.86-.02 3.24 0 .22.15.46.55.39C13.71 14.55 16 11.54 16 8c0-4.42-3.58-8-8-8z"/>
+                            </svg>
                         </a>
                         <a href={project.html_url} target="_blank" class="text-sm text-text underline hover:text-accent">
                             View Repository
