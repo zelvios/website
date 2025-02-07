@@ -47,7 +47,7 @@
 
 <style>
     .fade-in-left {
-        animation: fadeInLeft 1s ease-out;
+        animation: fadeInLeft 0.5s ease-out;
     }
 
     @keyframes fadeInLeft {
@@ -76,15 +76,15 @@
     }
 
     .nav-item:nth-child(1) {
-        animation-delay: 1s;
+        animation-delay: 0.5s;
     }
 
     .nav-item:nth-child(2) {
-        animation-delay: 1.2s;
+        animation-delay: 0.7s;
     }
 
     .nav-item:nth-child(3) {
-        animation-delay: 1.4s;
+        animation-delay: 0.9s;
     }
 
     @keyframes fadeInItem {
