@@ -22,7 +22,8 @@
             <h2 class="text-base font-semibold text-text mb-4"><span class="text-accent">♦</span> About Me</h2>
 
             <p class="text-base text-text text-left">
-                I'm a student at TECHCOLLEGE for programming where I specialize in the backend, primarily Rust, but love building with whatever tools are right for the job.
+                I’m currently studying programming at TECHCOLLEGE, focusing on backend development with Rust.
+                I enjoy working with a variety of tools and technologies, always aiming to select the best one for each project.
             </p>
 
             <div class="mt-8"></div>
@@ -35,8 +36,11 @@
                 <span class="bg-surface1 text-text rounded-full py-0.5 px-2 text-sm font-medium">C#</span>
                 <span class="bg-surface1 text-text rounded-full py-0.5 px-2 text-sm font-medium">Kotlin</span>
                 <span class="bg-surface1 text-text rounded-full py-0.5 px-2 text-sm font-medium">JavaScript</span>
+                <span class="bg-surface1 text-text rounded-full py-0.5 px-2 text-sm font-medium">TypeScript</span>
                 <span class="bg-surface1 text-text rounded-full py-0.5 px-2 text-sm font-medium">HTML</span>
                 <span class="bg-surface1 text-text rounded-full py-0.5 px-2 text-sm font-medium">CSS</span>
+                <span class="bg-surface1 text-text rounded-full py-0.5 px-2 text-sm font-medium">PostgreSQL</span>
+                <span class="bg-surface1 text-text rounded-full py-0.5 px-2 text-sm font-medium">SQLite</span>
             </div>
         </div>
     </div>
