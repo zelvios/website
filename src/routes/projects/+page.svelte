@@ -252,7 +252,7 @@
                     on:click={() => showGitHubProjects = !showGitHubProjects}
             >
                 <span class="bg-accent shadow-accent absolute -top-[150%] left-0 inline-flex w-full h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
-                {showGitHubProjects ? 'Show Fewer Projects' : 'View all Projects'}
+                {showGitHubProjects ? 'View Pinned Projects' : 'View all Projects'}
             </button>
         {/if}
     </div>
