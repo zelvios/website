@@ -1,13 +1,13 @@
 <main class="text-text p-8">
-    <div class="flex flex-col sm:flex-row items-center justify-center space-y-16 sm:space-x-40 sm:space-y-0 mt-[20vh]">
+    <div class="flex flex-col sm:flex-row items-center justify-center space-y-16 sm:space-x-40 sm:space-y-0 mt-[10vh] sm:mt-[20vh]">
 
         <!-- Left column: Title and Undertitle -->
-        <div class="w-auto text-center sm:text-left mt-[-15vh] sm:mt-0 fade-in">
-            <h1 class="text-4xl font-bold text-accent">
+        <div class="w-auto text-center sm:text-left mt-[-5vh] sm:mt-0 fade-in">
+            <h1 class="text-6xl sm:text-4xl font-bold text-accent">
                 Jacob Jørgensen
             </h1>
 
-            <p class="text-lg text-surface mt-2 text-center">
+            <p class="text-lg text-surface mt-2 text-center sm:text-left">
                 <a href="https://github.com/zelvios" target="_blank" class="underline-link text-surface">
                     https://github.com/zelvios
                 </a>
@@ -18,7 +18,7 @@
         </div>
 
         <!-- Right column: Information text container -->
-        <div class="w-auto sm:max-w-[20%] sm:mx-auto fade-in">
+        <div class="w-auto sm:max-w-[25%] sm:mx-auto fade-in">
             <h2 class="text-base font-semibold text-text mb-4"><span class="text-accent">♦</span> About Me</h2>
 
             <p class="text-base text-text text-left">
