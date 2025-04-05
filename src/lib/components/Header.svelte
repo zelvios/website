@@ -5,7 +5,7 @@
     }
 </script>
 
-<header class="bg-base bg-opacity-40 backdrop-blur-md text-text p-6 shadow-md flex flex-col items-center justify-between h-[15vh] fixed bottom-0 left-0 right-0 z-10 border-t-2 border-accent fade-in-left">
+<header class="bg-transparent bg-opacity-40 backdrop-blur-md text-text p-6 shadow-md flex flex-col items-center justify-between h-[15vh] fixed bottom-0 left-0 right-0 z-10 border-t-2 border-accent fade-in-left">
     <nav class="mt-4 text-center">
         <ul class="flex justify-center gap-6 flex-wrap">
             <li class="nav-item">
