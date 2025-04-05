@@ -6,11 +6,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        base: '#1e1e2e',
+        base: '#030014',
         text: '#cdd6f4',
         surface: '#626880',
         surface1: '#45475a',
-        accent: '#f38ba8',
+        accent: '#89b4fa',
       },
       fontFamily: {
         sans: ['JetBrains Mono', 'monospace'],
