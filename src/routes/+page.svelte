@@ -122,11 +122,11 @@
                 <div class="card mx-auto mb-4">
                     <div class="shadow">Skills</div>
                     <div class="skills-list">
-                        <span>Rust</span>
-                        <span>C</span>
-                        <span>C#</span>
-                        <span>Python</span>
-                        <span>JavaScript</span>
+                        <img src="/images/skills/rust.svg" alt="Rust" class="skill-logo"/>
+                        <img src="/images/skills/c.svg" alt="C" class="skill-logo"/>
+                        <img src="/images/skills/c-sharp.svg" alt="C#" class="skill-logo"/>
+                        <img src="/images/skills/python.svg" alt="Python" class="skill-logo"/>
+                        <img src="/images/skills/javascript.svg" alt="JavaScript" class="skill-logo"/>
                     </div>
                 </div>
 
@@ -419,7 +419,7 @@
         fill: #fffdef;
     }
 
-    /* Card */
+    /* Card / Skills */
     .card {
         width: 500px;
         height: 120px;
@@ -451,7 +451,7 @@
         flex-wrap: wrap;
     }
 
-    .skills-list span {
+    .skill-logo {
         position: relative;
         display: inline-block;
         padding: 5px 10px;
@@ -462,41 +462,43 @@
         border-radius: 5px;
         animation: animateText 4s linear infinite;
         margin: 5px;
-    }
-
-    .skills-list span:nth-child(1) {
-        animation-delay: 0s;
-    }
-
-    .skills-list span:nth-child(2) {
-        animation-delay: 0.4s;
-    }
-
-    .skills-list span:nth-child(3) {
-        animation-delay: 0.8s;
-    }
-
-    .skills-list span:nth-child(4) {
-        animation-delay: 1.2s;
-    }
-
-    .skills-list span:nth-child(5) {
-        animation-delay: 1.6s;
+        width: 48px;
+        height: auto;
     }
 
     @keyframes animateText {
         0% {
-            transform: translateY(20px);
             opacity: 0;
+            transform: translateY(20px);
         }
         50% {
-            transform: translateY(0);
             opacity: 1;
+            transform: translateY(0);
         }
         100% {
-            transform: translateY(-20px);
             opacity: 0;
+            transform: translateY(-20px);
         }
+    }
+
+    .skill-logo:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .skill-logo:nth-child(2) {
+        animation-delay: 0.4s;
+    }
+
+    .skill-logo:nth-child(3) {
+        animation-delay: 0.8s;
+    }
+
+    .skill-logo:nth-child(4) {
+        animation-delay: 1.2s;
+    }
+
+    .skill-logo:nth-child(5) {
+        animation-delay: 1.6s;
     }
 
     @media (max-width: 1000px) {
