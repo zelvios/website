@@ -107,7 +107,7 @@
                     <div class="flex flex-col items-start space-y-3 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto">
                         <a href={project.html_url} target="_blank">
                             <img
-                                    src={`https://raw.githubusercontent.com/Zelvios/${project.name}/main/screenshots/design.png`}
+                                    src={`https://raw.githubusercontent.com/Zelvios/${project.name}/main/.github/screenshots/design.png`}
                                     alt="Project Image"
                                     class="project-image w-full h-40 object-cover rounded-t-lg transition-all duration-300"
                                     on:error={handleImageError}
@@ -201,7 +201,7 @@
                     <div class="flex flex-col items-start space-y-3 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto">
                         <a href={project.html_url} target="_blank">
                             <img
-                                    src={`https://raw.githubusercontent.com/Zelvios/${project.name}/main/screenshots/design.png`}
+                                    src={`https://raw.githubusercontent.com/Zelvios/${project.name}/main/.github/screenshots/design.png`}
                                     alt="Project Image"
                                     class="project-image w-full h-40 object-cover rounded-t-lg transition-all duration-300"
                                     on:error={handleImageError}
