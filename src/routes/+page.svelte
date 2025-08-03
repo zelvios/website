@@ -201,7 +201,7 @@
             </div>
         {/if}
 
-        <span class="absolute bottom-0 left-0 w-full -z-30"
+        <span class="absolute bottom-0 left-0 w-full"
               style="height: 30vh; overflow: hidden;">
             <img alt="grid"
                  class="w-full h-full object-cover"
