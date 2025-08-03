@@ -20,20 +20,24 @@
                 </h1>
 
                 <div class="flex justify-center gap-4 mt-4">
-                    <button class="flex items-center gap-2 cursor-pointer text-white text-sm font-medium bg-gradient-to-r from-gray-800 to-black px-4 py-2 rounded-full border border-gray-600 hover:scale-105 duration-200 hover:text-accent hover:border-gray-800 hover:from-black hover:to-gray-900">
-                        <svg height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                                  fill="#FFFFFF"/>
-                        </svg>
-                        Github
-                    </button>
-                    <button class="flex items-center gap-2 cursor-pointer text-white text-sm font-medium bg-gradient-to-r from-gray-800 to-black px-4 py-2 rounded-full border border-gray-600 hover:scale-105 duration-200 hover:text-accent hover:border-gray-800 hover:from-black hover:to-gray-900">
-                        <svg fill="#FFFFFF" height="18" viewBox="0 0 24 24" width="18"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 24h4V7H.5v17zM8.5 7H12v2.5h.06c.49-.92 1.7-1.9 3.44-1.9 3.68 0 4.5 2.42 4.5 5.57V24h-4v-8.17c0-1.95-.03-4.47-2.72-4.47-2.73 0-3.15 2.13-3.15 4.33V24h-4V7z"/>
-                        </svg>
-                        LinkedIn
-                    </button>
+                    <a href="https://github.com/zelvios" rel="noopener noreferrer" target="_blank">
+                        <button class="flex items-center gap-2 cursor-pointer text-white text-sm font-medium bg-gradient-to-r from-gray-800 to-black px-4 py-2 rounded-full border border-gray-600 hover:scale-105 duration-200 hover:text-accent hover:border-gray-800 hover:from-black hover:to-gray-900">
+                            <svg height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                                      fill="#FFFFFF"/>
+                            </svg>
+                            Github
+                        </button>
+                    </a>
+                    <a href="https://www.linkedin.com/in/jacob-j-in/" rel="noopener noreferrer" target="_blank">
+                        <button class="flex items-center gap-2 cursor-pointer text-white text-sm font-medium bg-gradient-to-r from-gray-800 to-black px-4 py-2 rounded-full border border-gray-600 hover:scale-105 duration-200 hover:text-accent hover:border-gray-800 hover:from-black hover:to-gray-900">
+                            <svg fill="#FFFFFF" height="18" viewBox="0 0 24 24" width="18"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 24h4V7H.5v17zM8.5 7H12v2.5h.06c.49-.92 1.7-1.9 3.44-1.9 3.68 0 4.5 2.42 4.5 5.57V24h-4v-8.17c0-1.95-.03-4.47-2.72-4.47-2.73 0-3.15 2.13-3.15 4.33V24h-4V7z"/>
+                            </svg>
+                            LinkedIn
+                        </button>
+                    </a>
                 </div>
 
                 <div class="max-w-prose mx-auto mt-16">
@@ -70,7 +74,8 @@
 
     <!-- PART 2 Projects -->
     <section
-            class="snap-section flex flex-row items-center justify-center bg-base text-text relative overflow-x-hidden space-x-8 px-8 w-full" id="part2" >
+            class="snap-section flex flex-row items-center justify-center bg-base text-text relative overflow-x-hidden space-x-8 px-8 w-full"
+            id="part2">
         {#if loadError}
             <div class="max-w-md min-w-[200px] px-4 text-center">
                 <p class="text-accent font-semibold text-xl">
@@ -102,7 +107,7 @@
 
                     {#each repos as repo}
                         <div class="group relative flex-none w-[380px] min-w-0 mb-10">
-                            <div class="relative overflow-hidden rounded-2xl bg-slate-950 shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-accent/15" >
+                            <div class="relative overflow-hidden rounded-2xl bg-slate-950 shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-accent/15">
 
                                 <div class="absolute -left-16 -top-16 h-32 w-32 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/0 blur-2xl transition-all duration-500 group-hover:scale-150 group-hover:opacity-70"></div>
                                 <div class="absolute -right-16 -bottom-16 h-32 w-32 rounded-full bg-gradient-to-br from-purple-500/20 to-indigo-500/0 blur-2xl transition-all duration-500 group-hover:scale-150 group-hover:opacity-70"></div>
@@ -111,7 +116,7 @@
                                     <div class="absolute right-6 top-6">
                                         <img src="./images/projects.svg"
                                              alt="Project Icon"
-                                             class="h-12 w-12 text-indigo-500/10" />
+                                             class="h-12 w-12 text-indigo-500/10"/>
                                     </div>
 
                                     <!-- title & desc -->
@@ -124,7 +129,7 @@
 
                                             <img src={`https://raw.githubusercontent.com/Zelvios/${repo.name}/main/.github/screenshots/design.png`}
                                                  alt="Project screenshot"
-                                                 class="mt-4 rounded-lg w-full h-40 object-cover" />
+                                                 class="mt-4 rounded-lg w-full h-40 object-cover"/>
                                         </a>
 
                                         <p class="repo-desc text-slate-400 mt-2">
@@ -155,15 +160,16 @@
                                             <a href={repo.html_url}
                                                target="_blank"
                                                rel="noopener noreferrer"
-                                               class="rounded-lg bg-slate-900 p-2 text-slate-400 transition-colors hover:text-white"  aria-label={`Go to ${repo.name} GitHub repository`} >
+                                               class="rounded-lg bg-slate-900 p-2 text-slate-400 transition-colors hover:text-white"
+                                               aria-label={`Go to ${repo.name} GitHub repository`}>
                                                 <!-- gitHub icon SVG -->
                                                 <svg class="h-5 w-5"
                                                      fill="currentColor"
                                                      viewBox="0 0 24 24"
-                                                     aria-hidden="true" >
+                                                     aria-hidden="true">
                                                     <path fill-rule="evenodd"
                                                           clip-rule="evenodd"
-                                                          d="M12 0C5.372 0 0 5.373 0 12c0 5.303 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.838 1.237 1.838 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.31.469-2.381 1.236-3.22-.124-.304-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.484 11.484 0 013.003-.404c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.872.118 3.176.77.839 1.235 1.91 1.235 3.22 0 4.609-2.807 5.625-5.479 5.921.43.372.823 1.103.823 2.223v3.293c0 .319.192.694.801.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                                                          d="M12 0C5.372 0 0 5.373 0 12c0 5.303 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.838 1.237 1.838 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.31.469-2.381 1.236-3.22-.124-.304-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.484 11.484 0 013.003-.404c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.872.118 3.176.77.839 1.235 1.91 1.235 3.22 0 4.609-2.807 5.625-5.479 5.921.43.372.823 1.103.823 2.223v3.293c0 .319.192.694.801.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
                                                 </svg>
                                             </a>
                                         </div>
@@ -188,13 +194,13 @@
            class="absolute bottom-8 right-8 p-3 rounded-full bg-surface1 text-accent shadow-lg hover:bg-accent-dark transition-colors flex items-center justify-center"
            href="#home"
            id="to-section-1"
-           style="width: 48px; height: 48px;" >
+           style="width: 48px; height: 48px;">
             <svg class="w-6 h-6 -rotate-90 transition-transform"
                  fill="none"
                  stroke="currentColor"
                  stroke-width="2"
                  viewBox="0 0 24 24"
-                 xmlns="http://www.w3.org/2000/svg" >
+                 xmlns="http://www.w3.org/2000/svg">
                 <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
         </a>
