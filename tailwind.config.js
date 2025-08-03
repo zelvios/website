@@ -10,7 +10,7 @@ export default {
         text: '#cdd6f4',
         surface: '#626880',
         surface1: '#45475a',
-        accent: '#89b4fa',
+        accent: '#cba6f7',
       },
       fontFamily: {
         sans: ['JetBrains Mono', 'monospace'],
