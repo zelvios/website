@@ -18,9 +18,7 @@
                 <li class="nav-item">
                     <a
                             href={href}
-                            class="text-base p-2 rounded flex flex-col items-center"
-                            class:text-[#cba6f7]={isActive(href)}
-                            class:text-text={!isActive(href)}
+                            class="text-base p-2 rounded flex flex-col items-center text-text"
                     >
                         {label}
                         {#if isActive(href)}
