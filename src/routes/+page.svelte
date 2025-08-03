@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            <div class="relative group">
+            <div class="relative group fade-in">
                 <a class="relative inline-block p-px font-semibold leading-6 text-text bg-base shadow-lg cursor-pointer rounded-2xl shadow-accent transition-all duration-300 ease-in-out hover:scale-105 active:scale-95 hover:shadow-accent"
                    href="#part2"
                    id="to-section-2">
