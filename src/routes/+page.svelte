@@ -93,17 +93,35 @@
             <div class="overflow-x-auto no-scrollbar">
                 <div class="flex items-center space-x-6 px-4 pb-4">
 
-                    <div class="flex-none max-w-md min-w-[200px]">
-                        <a href="/projects" class="block no-underline">
-                            <h1 class="text-6xl font-bold bg-gradient-to-r from-accent to-white bg-clip-text text-transparent">
-                                Projects
-                            </h1>
-                            <p class="text-md text-text mt-4">
-                                My workflow is managed on GitHub. Here are some of my featured projects; feel free to
-                                explore the full collection by clicking the “Projects” tab or click here.
-                            </p>
-                        </a>
+                    <div class="relative flex-none max-w-md min-w-[200px] pl-6">
+                        <!-- Gradient Line -->
+                        <div class="absolute left-0 top-0 h-full w-[1px] bg-gradient-to-b from-accent to-white mt-2 mb-2"></div>
+
+                        <!-- Content -->
+                        <div>
+                            <a href="/projects" class="block no-underline">
+                                <h1 class="text-6xl font-bold bg-gradient-to-r from-accent to-white bg-clip-text text-transparent">
+                                    Projects
+                                </h1>
+                                <p class="text-md text-text mt-4">
+                                    My workflow is primarily managed on GitHub. Here are some of my featured projects;
+                                    feel free to
+                                    explore the full collection by clicking the “Projects” tab or the button below.
+                                </p>
+                            </a>
+                            <a href="/projects">
+                                <button class="mt-5 relative px-10 py-2.5 rounded-xl bg-zinc-900 text-text font-bold tracking-widest uppercase text-sm border-b-4 border-accent/50 hover:border-accent transition-all duration-300 ease-in-out hover:text-accent shadow-[0_10px_20px_rgba(251,191,36,0.15)] hover:shadow-[0_15px_30px_rgba(251,191,36,0.25)] active:border-b-0 active:translate-y-1">
+                                    <span class="flex items-center gap-3 relative z-10">
+                                        View All
+                                        <svg viewBox="0 0 24 24" fill="currentColor"
+                                             class="w-5 h-5 transition-all duration-300 group-hover:translate-x-1">
+                                            <path d="M12 4L10.6 5.4L16.2 11H4V13H16.2L10.6 18.6L12 20L20 12L12 4Z"></path></svg></span>
+                                    <div class="absolute -inset-1 rounded-xl bg-gradient-to-br from-amber-500/20 to-yellow-500/20 blur-2xl group-hover:blur-xl transition-all duration-300 -z-10 opacity-0 group-hover:opacity-100"></div>
+                                </button>
+                            </a>
+                        </div>
                     </div>
+
 
                     {#each repos as repo}
                         <div class="group relative flex-none w-[380px] min-w-0 mb-10">
