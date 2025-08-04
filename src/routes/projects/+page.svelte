@@ -82,7 +82,7 @@
                                 <!-- languages -->
                                 <div class="rounded-xl bg-slate-900/50 p-4 mt-4">
                                     <div class="flex items-center gap-2">
-                                        <span class="text-sm font-medium text-white">Most Used Languages</span>
+                                        <span class="text-sm font-medium text-white">Languages</span>
                                     </div>
 
                                     {#if repo.topLanguages === null}
@@ -115,7 +115,7 @@
                                             </svg>
                                         </a>
                                     </div>
-                                    <span class="text-sm text-slate-400"> Created: {formatDate(repo.updated_at)} </span>
+                                    <span class="text-sm text-slate-400"> Created: {formatDate(repo.created_at)} </span>
                                 </div>
                             </div>
                         </div>
@@ -138,11 +138,11 @@
             if (!res.ok) throw new Error(res.statusText);
             const data = await res.json();
 
-            repos = data.sort(
+            repos = [...data].sort(
                 (a, b) => new Date(b.created_at) - new Date(a.created_at)
             );
 
-            await Promise.all(
+            repos = await Promise.all(
                 repos.map(async repo => {
                     repo.topLanguages = null;
                     try {
@@ -158,6 +158,7 @@
                     } catch {
                         repo.topLanguages = [];
                     }
+                    return repo;
                 })
             );
 
