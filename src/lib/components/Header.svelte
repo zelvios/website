@@ -1,14 +1,30 @@
 <script>
     import { page } from '$app/stores';
+    import {onMount} from "svelte";
+
+    let stickyMenu = false;
 
     function isActive(path) {
         const normalize = (str) => str.endsWith('/') && str !== '/' ? str.slice(0, -1) : str;
         return normalize($page.url.pathname) === normalize(path);
     }
+    function handleScroll() {
+        stickyMenu = window.scrollY > 0;
+    }
+
+    onMount(() => {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    });
 </script>
 
-<header class="text-text p-4 flex flex-col items-center justify-between h-[8vh] fixed top-0 left-0 right-0 z-50 fade-in-left">
-    <nav class="mt-4 text-center">
+<header class="fixed left-0 top-0 w-full z-50 p-3 lg:py-0 flex flex-col items-center justify-between h-[7vh] transition-all duration-150"
+        class:bg-base={stickyMenu}
+        class:bg-opacity-70={stickyMenu}
+        class:backdrop-blur-lg={stickyMenu}
+        class:shadow={stickyMenu}
+        class:!py-4={stickyMenu}>
+    <nav class="mt-3 text-center">
         <ul class="flex justify-center gap-6 flex-wrap">
             {#each [
                 { href: '/', label: 'Home' },
