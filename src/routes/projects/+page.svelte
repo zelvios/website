@@ -1,263 +1,3 @@
-<script>
-    import { onMount } from 'svelte';
-
-    let showGitHubProjects = false;
-    let projects = [];
-    let loading = true;
-    let error = null;
-    let currentPage = 1;
-    const projectsPerPage = 6;
-
-    const staticProjects = [
-        'dotfiles',
-        'todo-tui',
-        'BashControlCenter'
-    ];
-
-    let staticProjectData = [];
-
-    const fetchProjects = async () => {
-        const timeoutDuration = 5000;
-
-        const timeout = setTimeout(() => {
-            if (loading) {
-                error = 'Failed to fetch projects, please try again later.';
-                loading = false;
-            }
-        }, timeoutDuration);
-
-        try {
-            const response = await fetch('https://api.github.com/users/Zelvios/repos');
-            if (!response.ok) {
-                throw new Error('Failed to fetch projects');
-            }
-            const data = await response.json();
-            projects = data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-
-            staticProjectData = staticProjects
-                .map(projectName =>
-                    projects.find(project => project.name === projectName)
-                )
-                .filter(project => project !== undefined);
-        } catch (err) {
-            error = err.message;
-        } finally {
-            clearTimeout(timeout);
-            loading = false;
-        }
-    };
-
-    const paginate = (direction) => {
-        if (direction === 'next') {
-            if (currentPage < totalPages) currentPage += 1;
-        } else if (direction === 'prev') {
-            if (currentPage > 1) currentPage -= 1;
-        }
-    };
-
-    const getCurrentProjects = () => {
-        const startIndex = (currentPage - 1) * projectsPerPage;
-        const endIndex = startIndex + projectsPerPage;
-        return projects.slice(startIndex, endIndex);
-    };
-
-    $: totalPages = Math.ceil(projects.length / projectsPerPage);
-
-    onMount(() => {
-        fetchProjects();
-    });
-
-    function handleImageError(event) {
-        event.target.src = 'https://avatars.githubusercontent.com/u/0?v=4';
-    }
-</script>
-
-<main class="text-text p-8 flex flex-col">
-    {#if showGitHubProjects}
-        {#if loading}
-            <div class="flex items-center justify-center">
-                <div role="status">
-                    <svg aria-hidden="true" class="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-accent" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-                        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-                    </svg>
-                    <span class="sr-only">Loading...</span>
-                </div>
-                <p class="text-center text-accent ml-3">Loading projects...</p>
-            </div>
-        {:else if error}
-            <div class="flex flex-col justify-center items-center text-accent" role="alert">
-                <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-                </svg>
-                <span class="sr-only">Info</span>
-                <div class="flex justify-center">
-                    <span class="font-medium">Error! </span>
-                    <span class="ml-2">{error}</span>
-                </div>
-
-                <div class="text-center mt-2 text-sm text-gray-500">
-                    <p>Please try again later.</p>
-                </div>
-            </div>
-        {:else}
-            <!-- Github Project Card Design -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-10 max-w-screen-lg mx-auto fade-in">
-                {#each getCurrentProjects() as project}
-                    <div class="flex flex-col items-start space-y-3 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto">
-                        <a href={project.html_url} target="_blank">
-                            <img
-                                    src={`https://raw.githubusercontent.com/Zelvios/${project.name}/main/.github/screenshots/design.png`}
-                                    alt="Project Image"
-                                    class="project-image w-full h-40 object-cover rounded-t-lg transition-all duration-300"
-                                    on:error={handleImageError}
-                            />
-                        </a>
-                        <h2 class="text-lg font-semibold text-accent text-left w-full flex items-center space-x-2">
-                            <a href={project.html_url} target="_blank">
-                                <span>{project.name}</span>
-                            </a>
-                            <span class="line"></span>
-                        </h2>
-                        <p class="text-xs text-left w-full">
-                            {#if project.language}
-                                <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-gray-700 rounded-md">
-                                    {project.language}
-                                </span>
-                            {/if}
-                        </p>
-                        <p class="text-sm text-text text-left w-full">
-                            {project.description || 'No description available'}
-                        </p>
-                        <p class="text-xs text-left w-full leading-tight">
-                            <span class="text-accent">- Created on:</span>
-                            <span class="text-text">{new Date(project.created_at).toLocaleDateString()}</span>
-                        </p>
-
-                        <div class="flex items-center space-x-2 mt-4 w-full">
-                            <a href={project.html_url} target="_blank" class="text-accent hover:text-accent-dark">
-                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.55 5.47 7.61.4.07.55-.17.55-.39 0-.19-.01-.69-.02-1.35-2.23.48-2.69-.54-2.69-.54-.36-.91-.88-1.15-.88-1.15-.72-.5.06-.49.06-.49 1.01.07 1.54 1.04 1.54 1.04 1.05 1.77 2.75 1.26 3.42.96.11-.77.41-1.26.75-1.55-1.56-.18-3.19-.78-3.19-3.47 0-.76.27-1.38.73-1.87-.07-.18-.32-.93.07-1.94 0 0 .58-.19 1.89.73.55-.15 1.14-.23 1.73-.23s1.18.08 1.73.23c1.31-.92 1.89-.73 1.89-.73.39 1.01.14 1.76.07 1.94.46.49.73 1.11.73 1.87 0 2.7-1.63 3.29-3.19 3.47.42.36.8 1.09.8 2.19 0 1.58-.02 2.86-.02 3.24 0 .22.15.46.55.39C13.71 14.55 16 11.54 16 8c0-4.42-3.58-8-8-8z"/>
-                                </svg>
-                            </a>
-                            <a href={project.html_url} target="_blank" class="text-sm text-text underline hover:text-accent">
-                                View Repository
-                            </a>
-                        </div>
-                    </div>
-                {/each}
-            </div>
-            <div class="flex justify-center items-center mb-12 space-x-4 mt-12 fade-in">
-                <button
-                        on:click={() => paginate('prev')}
-                        class="py-1 px-2 bg-accent text-black rounded-lg hover:bg-opacity-80 transition-colors {currentPage === 1 ? 'bg-gray-400 text-gray-700' : 'bg-text-accent'} text-sm"
-                        disabled={currentPage === 1}
-                >
-                    Previous
-                </button>
-                <span class="mx-2 text-lg">
-                    Page {currentPage} of {totalPages}
-                </span>
-                <button
-                        on:click={() => paginate('next')}
-                        class="py-1 px-2 bg-accent text-black rounded-lg hover:bg-opacity-80 transition-colors {currentPage === totalPages ? 'bg-gray-400 text-gray-700' : 'bg-text-accent'} text-sm"
-                        disabled={currentPage === totalPages}
-                >
-                    Next
-                </button>
-            </div>
-        {/if}
-    {:else}
-        {#if loading}
-            <div class="flex items-center justify-center">
-                <div role="status">
-                    <svg aria-hidden="true" class="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-accent" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-                        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-                    </svg>
-                    <span class="sr-only">Loading...</span>
-                </div>
-                <p class="text-center text-accent ml-3">Loading projects...</p>
-            </div>
-        {:else if error}
-            <div class="flex flex-col justify-center items-center text-accent" role="alert">
-                <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-                </svg>
-                <span class="sr-only">Info</span>
-                <div class="flex justify-center">
-                    <span class="font-medium">Error! </span>
-                    <span class="ml-2">{error}</span>
-                </div>
-
-                <div class="text-center mt-2 text-sm text-gray-500">
-                    <p>Please try again later.</p>
-                </div>
-            </div>
-        {:else}
-            <div class={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-screen-lg mx-auto fade-in mb-16 mt-10
-                ${staticProjectData.length <= 2 ? 'justify-center' : ''}`}>
-                {#each staticProjectData as project}
-                    <div class="flex flex-col items-start space-y-3 w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto">
-                        <a href={project.html_url} target="_blank">
-                            <img
-                                    src={`https://raw.githubusercontent.com/Zelvios/${project.name}/main/.github/screenshots/design.png`}
-                                    alt="Project Image"
-                                    class="project-image w-full h-40 object-cover rounded-t-lg transition-all duration-300"
-                                    on:error={handleImageError}
-                            />
-                        </a>
-                        <h2 class="text-lg font-semibold text-accent text-left w-full flex items-center space-x-2">
-                            <a href={project.html_url} target="_blank">
-                                <span>{project.name}</span>
-                            </a>
-                            <span class="line"></span>
-                        </h2>
-                        <p class="text-xs text-left w-full">
-                            {#if project.language}
-                                <span class="inline-block px-2 py-1 text-xs font-semibold text-white bg-gray-700 rounded-md">
-                                    {project.language}
-                                </span>
-                            {/if}
-                        </p>
-                        <p class="text-sm text-text text-left w-full">
-                            {project.description || 'No description available'}
-                        </p>
-                        <p class="text-xs text-left w-full leading-tight">
-                            <span class="text-accent">- Created on:</span>
-                            <span class="text-text">{new Date(project.created_at).toLocaleDateString()}</span>
-                        </p>
-
-                        <div class="flex items-center space-x-2 mt-4 w-full">
-                            <a href={project.html_url} target="_blank" class="text-accent hover:text-accent-dark">
-                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.55 5.47 7.61.4.07.55-.17.55-.39 0-.19-.01-.69-.02-1.35-2.23.48-2.69-.54-2.69-.54-.36-.91-.88-1.15-.88-1.15-.72-.5.06-.49.06-.49 1.01.07 1.54 1.04 1.54 1.04 1.05 1.77 2.75 1.26 3.42.96.11-.77.41-1.26.75-1.55-1.56-.18-3.19-.78-3.19-3.47 0-.76.27-1.38.73-1.87-.07-.18-.32-.93.07-1.94 0 0 .58-.19 1.89.73.55-.15 1.14-.23 1.73-.23s1.18.08 1.73.23c1.31-.92 1.89-.73 1.89-.73.39 1.01.14 1.76.07 1.94.46.49.73 1.11.73 1.87 0 2.7-1.63 3.29-3.19 3.47.42.36.8 1.09.8 2.19 0 1.58-.02 2.86-.02 3.24 0 .22.15.46.55.39C13.71 14.55 16 11.54 16 8c0-4.42-3.58-8-8-8z"/>
-                                </svg>
-                            </a>
-                            <a href={project.html_url} target="_blank" class="text-sm text-text underline hover:text-accent">
-                                View Repository
-                            </a>
-                        </div>
-                    </div>
-                {/each}
-            </div>
-        {/if}
-    {/if}
-
-    <div class="flex justify-center mb-8 mt-auto mt-8 fade-in">
-        {#if staticProjectData.length > 0}
-            <button
-                    class="bg-base text-text border border-accent border-b-4 font-medium overflow-hidden relative px-8 py-2 rounded-md
-                hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group"
-                    on:click={() => showGitHubProjects = !showGitHubProjects}
-            >
-                <span class="bg-accent shadow-accent absolute -top-[150%] left-0 inline-flex w-full h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
-                {showGitHubProjects ? 'View Pinned Projects' : 'View all Projects'}
-            </button>
-        {/if}
-    </div>
-</main>
-
 <style>
     .fade-in {
         animation: fadeIn 1s ease-out;
@@ -273,18 +13,174 @@
             transform: translateY(0);
         }
     }
-
-    .project-image {
-        transition: transform 0.3s ease, filter 0.3s ease;
-    }
-
-    .project-image:hover {
-        transform: scale(1.05);
-    }
-
-    h2 .line {
-        flex-grow: 1;
-        border-bottom: 1.5px solid #c6d0f5;
-        margin-left: 8px;
-    }
 </style>
+
+<main class="relative overflow-hidden">
+    <aside class="relative md:fixed top-0 left-0 w-full md:w-1/2 h-auto md:h-screen pr-4 flex items-center justify-center text-text mt-20 md:mt-0 mb-8 md:mb-0" >
+        <div class="text-center fade-in max-w-xl mx-auto px-4">
+            <h1 class="text-6xl font-bold bg-gradient-to-r from-accent to-white bg-clip-text text-transparent">
+                Projects
+            </h1>
+            <p class="mt-4 text-base text-text leading-relaxed">
+                A complete list of my public GitHub repositories, including experiments, tools, and ongoing projects.
+            </p>
+        </div>
+    </aside>
+
+    <section class="mt-8 md:mt-0  ml-0 md:ml-[50vw] pr-4 pt-20 space-y-8 text-text">
+        <section class="snap-section flex flex-wrap items-start justify-center bg-base text-text relative gap-5 px-5 w-full">
+            {#if loadError || repos.length === 0}
+                <div class="w-full min-h-[50vh] flex items-center justify-center">
+                    {#if loadError}
+                        <div class="max-w-md min-w-[200px] px-4 text-center">
+                            <p class="text-accent font-semibold text-xl">
+                                Sorry, could not load GitHub projects at the moment.
+                            </p>
+                            <p class="text-text mt-2 text-base">
+                                Please try again later.
+                            </p>
+                        </div>
+                    {:else}
+                        <div class="text-center text-slate-400 text-lg">
+                            Loading projects…
+                        </div>
+                    {/if}
+                </div>
+            {:else}
+                {#each repos as repo}
+                    <div class="group relative flex-none w-[360px] min-w-0 mb-10">
+                        <div class="relative overflow-hidden rounded-2xl bg-slate-950 shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-accent/15">
+
+                            <div class="absolute -left-16 -top-16 h-32 w-32 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/0 blur-2xl transition-all duration-500 group-hover:scale-150 group-hover:opacity-70"></div>
+                            <div class="absolute -right-16 -bottom-16 h-32 w-32 rounded-full bg-gradient-to-br from-purple-500/20 to-indigo-500/0 blur-2xl transition-all duration-500 group-hover:scale-150 group-hover:opacity-70"></div>
+
+                            <div class="relative p-6">
+                                <div class="absolute right-6 top-6">
+                                    <img src="./images/projects.svg"
+                                         alt="Project Icon"
+                                         class="h-12 w-12 text-indigo-500/10"/>
+                                </div>
+
+                                <!-- title & desc -->
+                                <div class="mt-4 space-y-2">
+                                    <a href={repo.html_url}
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                       class="block hover:underline">
+                                        <h3 class="text-xl font-semibold text-white">{repo.name}</h3>
+
+                                        <img src={`https://raw.githubusercontent.com/Zelvios/${repo.name}/main/.github/screenshots/design.png`}
+                                             alt="Project screenshot"
+                                             class="mt-4 rounded-lg w-full h-40 object-cover"/>
+                                    </a>
+
+                                    <p class="repo-desc text-slate-400 mt-2">
+                                        {repo.description ?? 'No description provided.'}
+                                    </p>
+                                </div>
+
+                                <!-- languages -->
+                                <div class="rounded-xl bg-slate-900/50 p-4 mt-4">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-sm font-medium text-white">Most Used Languages</span>
+                                    </div>
+
+                                    {#if repo.topLanguages === null}
+                                        <p class="mt-1 text-xs text-slate-400 italic">Loading…</p>
+                                    {:else if repo.topLanguages.length > 0}
+                                        <p class="mt-1 text-xs text-slate-400">
+                                            {repo.topLanguages.join(', ')}
+                                        </p>
+                                    {:else}
+                                        <p class="mt-1 text-xs text-slate-400">—</p>
+                                    {/if}
+                                </div>
+
+                                <!-- gitHub link & created date -->
+                                <div class="mt-6 flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <a href={repo.html_url}
+                                           target="_blank"
+                                           rel="noopener noreferrer"
+                                           class="rounded-lg bg-slate-900 p-2 text-slate-400 transition-colors hover:text-white"
+                                           aria-label={`Go to ${repo.name} GitHub repository`}>
+                                            <!-- gitHub icon SVG -->
+                                            <svg class="h-5 w-5"
+                                                 fill="currentColor"
+                                                 viewBox="0 0 24 24"
+                                                 aria-hidden="true">
+                                                <path fill-rule="evenodd"
+                                                      clip-rule="evenodd"
+                                                      d="M12 0C5.372 0 0 5.373 0 12c0 5.303 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.838 1.237 1.838 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.31.469-2.381 1.236-3.22-.124-.304-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.484 11.484 0 013.003-.404c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.872.118 3.176.77.839 1.235 1.91 1.235 3.22 0 4.609-2.807 5.625-5.479 5.921.43.372.823 1.103.823 2.223v3.293c0 .319.192.694.801.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <span class="text-sm text-slate-400"> Created: {formatDate(repo.updated_at)} </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {/each}
+            {/if}
+        </section>
+    </section>
+</main>
+
+<script>
+    import { afterUpdate, onMount, tick } from 'svelte';
+
+    let loadError = false;
+    let repos = [];
+
+    onMount(async () => {
+        try {
+            const res = await fetch('https://api.github.com/users/Zelvios/repos');
+            if (!res.ok) throw new Error(res.statusText);
+            const data = await res.json();
+
+            repos = data.sort(
+                (a, b) => new Date(b.created_at) - new Date(a.created_at)
+            );
+
+            await Promise.all(
+                repos.map(async repo => {
+                    repo.topLanguages = null;
+                    try {
+                        const langRes = await fetch(
+                            `https://api.github.com/repos/Zelvios/${repo.name}/languages`
+                        );
+                        if (!langRes.ok) throw new Error(langRes.statusText);
+                        const langs = await langRes.json();
+                        repo.topLanguages = Object.entries(langs)
+                            .sort(([, a], [, b]) => b - a)
+                            .slice(0, 5)
+                            .map(([lang]) => lang);
+                    } catch {
+                        repo.topLanguages = [];
+                    }
+                })
+            );
+
+            loadError = false;
+        } catch (e) {
+            console.error('Could not load repos:', e);
+            loadError = true;
+        }
+    });
+
+    function formatDate(iso) {
+        return new Date(iso).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+    }
+
+    afterUpdate(async () => {
+        await tick();
+        const descs = Array.from(document.querySelectorAll('.repo-desc'));
+        if (!descs.length) return;
+        const maxH = descs.reduce((mx, el) => Math.max(mx, el.offsetHeight), 0);
+        descs.forEach(el => el.style.minHeight = `${maxH}px`);
+    });
+</script>
