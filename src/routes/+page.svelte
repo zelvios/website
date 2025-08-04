@@ -110,13 +110,15 @@
                                 </p>
                             </a>
                             <a href="/projects">
-                                <button class="mt-5 relative px-10 py-2.5 rounded-xl bg-zinc-900 text-text font-bold tracking-widest uppercase text-sm border-b-4 border-accent/50 hover:border-accent transition-all duration-300 ease-in-out hover:text-accent shadow-[0_10px_20px_rgba(251,191,36,0.15)] hover:shadow-[0_15px_30px_rgba(251,191,36,0.25)] active:border-b-0 active:translate-y-1">
+                                <button class="mt-5 relative px-10 py-2.5 rounded-xl bg-zinc-900 text-text font-bold tracking-widest uppercase text-sm border-b-4 border-accent/50 hover:border-accent transition-all duration-300 ease-in-out hover:text-accent shadow-[0_10px_20px_rgba(203,166,247,0.15)] hover:shadow-[0_15px_30px_rgba(203,166,247,0.25)] active:border-b-0 active:translate-y-1">
                                     <span class="flex items-center gap-3 relative z-10">
                                         View All
-                                        <svg viewBox="0 0 24 24" fill="currentColor"
-                                             class="w-5 h-5 transition-all duration-300 group-hover:translate-x-1">
-                                            <path d="M12 4L10.6 5.4L16.2 11H4V13H16.2L10.6 18.6L12 20L20 12L12 4Z"></path></svg></span>
-                                    <div class="absolute -inset-1 rounded-xl bg-gradient-to-br from-amber-500/20 to-yellow-500/20 blur-2xl group-hover:blur-xl transition-all duration-300 -z-10 opacity-0 group-hover:opacity-100"></div>
+                                    <svg viewBox="0 0 24 24" fill="currentColor"
+                                         class="w-5 h-5 transition-all duration-300 group-hover:translate-x-1">
+                                        <path d="M12 4L10.6 5.4L16.2 11H4V13H16.2L10.6 18.6L12 20L20 12L12 4Z"></path>
+                                    </svg>
+                                    </span>
+                                    <div class="absolute -inset-1 rounded-xl bg-gradient-to-br from-accent/20 to-accent0/20 blur-2xl group-hover:blur-xl transition-all duration-300 -z-10 opacity-0 group-hover:opacity-100"></div>
                                 </button>
                             </a>
                         </div>
