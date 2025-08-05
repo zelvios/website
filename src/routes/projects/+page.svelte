@@ -15,8 +15,8 @@
     }
 </style>
 
-<main class="relative overflow-hidden">
-    <aside class="relative md:fixed top-0 left-0 w-full md:w-1/2 h-auto md:h-screen pr-4 flex items-center justify-center text-text mt-20 md:mt-0 mb-8 md:mb-0" >
+<main>
+    <aside class="relative xl:fixed top-0 left-0 w-full xl:w-1/4 h-auto xl:h-screen pr-4 flex items-center justify-center text-text mt-20 xl:mt-0 mb-8 xl:mb-0" >
         <div class="text-center fade-in max-w-xl mx-auto px-4">
             <h1 class="text-6xl font-bold bg-gradient-to-r from-accent to-white bg-clip-text text-transparent">
                 Projects
@@ -27,7 +27,7 @@
         </div>
     </aside>
 
-    <section class="mt-8 md:mt-0  ml-0 md:ml-[50vw] pr-4 pt-20 space-y-8 text-text">
+    <section class="mt-8 xl:mt-0  ml-0 xl:ml-[25vw] pr-4 pt-20 space-y-8 text-text">
         <section class="snap-section flex flex-wrap items-start justify-center bg-base text-text relative gap-5 px-5 w-full">
             {#if loadError || repos.length === 0}
                 <div class="w-full min-h-[50vh] flex items-center justify-center">
@@ -134,13 +134,23 @@
 
     onMount(async () => {
         try {
+            const cached = localStorage.getItem('zelvios_repos');
+            const lastFetched = localStorage.getItem('zelvios_repos_fetched_at');
+            const oneDay = 24 * 60 * 60 * 1000;
+            const now = Date.now();
+
+            if (cached && lastFetched && now - Number(lastFetched) < oneDay) {
+                repos = JSON.parse(cached);
+                return;
+            }
+
             const res = await fetch('https://api.github.com/users/Zelvios/repos');
             if (!res.ok) throw new Error(res.statusText);
             const data = await res.json();
 
-            repos = [...data].sort(
-                (a, b) => new Date(b.created_at) - new Date(a.created_at)
-            );
+            repos = [...data]
+                .filter(repo => repo.name.toLowerCase() !== 'zelvios')
+                .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
             repos = await Promise.all(
                 repos.map(async repo => {
@@ -162,6 +172,7 @@
                 })
             );
 
+            localStorage.setItem('zelvios_repos', JSON.stringify(repos));
             loadError = false;
         } catch (e) {
             console.error('Could not load repos:', e);
