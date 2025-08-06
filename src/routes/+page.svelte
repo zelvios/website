@@ -31,9 +31,10 @@
                     </a>
                     <a href="https://www.linkedin.com/in/jacob-j-in/" rel="noopener noreferrer" target="_blank">
                         <button class="flex items-center gap-2 cursor-pointer text-white text-sm font-medium bg-gradient-to-r from-gray-800 to-black px-4 py-2 rounded-full border border-gray-600 hover:scale-105 duration-200 hover:text-accent hover:border-gray-800 hover:from-black hover:to-gray-900">
-                            <svg fill="#FFFFFF" height="18" viewBox="0 0 24 24" width="18"
+                            <svg height="18" viewBox="0 0 24 24" width="18"
                                  xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 24h4V7H.5v17zM8.5 7H12v2.5h.06c.49-.92 1.7-1.9 3.44-1.9 3.68 0 4.5 2.42 4.5 5.57V24h-4v-8.17c0-1.95-.03-4.47-2.72-4.47-2.73 0-3.15 2.13-3.15 4.33V24h-4V7z"/>
+                                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 24h4V7H.5v17zM8.5 7H12v2.5h.06c.49-.92 1.7-1.9 3.44-1.9 3.68 0 4.5 2.42 4.5 5.57V24h-4v-8.17c0-1.95-.03-4.47-2.72-4.47-2.73 0-3.15 2.13-3.15 4.33V24h-4V7z"
+                                      fill="#FFFFFF"/>
                             </svg>
                             LinkedIn
                         </button>
@@ -55,13 +56,14 @@
                    id="to-section-2">
                     <span class="absolute inset-0 rounded-2xl bg-gradient-to-r from-accent via-text to-surface1 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
                     <span class="relative z-10 block px-6 py-3 rounded-2xl bg-base">
-                        <div class="relative z-10 flex items-center space-x-3">
+                        <span class="relative z-10 flex items-center space-x-3">
                             <span class="transition-all duration-500 group-hover:translate-x-1.5 group-hover:text-accent">Begin Journey</span>
                             <svg class="w-7 h-7 transition-all duration-500 group-hover:translate-y-1.5 group-hover:text-accent rotate-90"
-                                 fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path>
+                                 viewBox="0 0 24 24">
+                                <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                      fill="currentColor"></path>
                             </svg>
-                        </div>
+                        </span>
                     </span>
                 </a>
             </div>
@@ -90,8 +92,8 @@
                 Loading projects…
             </div>
         {:else}
-            <div class="overflow-x-auto no-scrollbar">
-                <div class="flex items-center space-x-6 px-4 pb-4">
+            <div class="overflow-x-hidden overflow-y-auto no-scrollbar max-h-[80vh]">
+                <div class="flex flex-col 2xl:flex-row 2xl:flex-nowrap items-start 2xl:items-center space-y-6 2xl:space-y-0 2xl:space-x-6 px-4 pb-4 ">
 
                     <div class="relative flex-none max-w-md min-w-[200px] pl-6">
                         <!-- Gradient Line -->
@@ -99,26 +101,25 @@
 
                         <!-- Content -->
                         <div>
-                            <a href="/projects" class="block no-underline">
-                                <h1 class="text-6xl font-bold bg-gradient-to-r from-accent to-white bg-clip-text text-transparent">
-                                    Projects
-                                </h1>
-                                <p class="text-md text-text mt-4">
-                                    My workflow is primarily managed on GitHub. Here are some of my featured projects;
-                                    feel free to
-                                    explore the full collection by clicking the “Projects” tab or the button below.
-                                </p>
-                            </a>
+                            <h1 class="text-6xl font-bold bg-gradient-to-r from-accent to-white bg-clip-text text-transparent">
+                                Projects
+                            </h1>
+                            <p class="text-md text-text mt-4">
+                                My workflow is primarily managed on GitHub. Here are some of my featured projects;
+                                feel free to
+                                explore the full collection by clicking the “Projects” tab or the button below.
+                            </p>
                             <a href="/projects">
                                 <button class="mt-5 relative px-10 py-2.5 rounded-xl bg-zinc-900 text-text font-bold tracking-widest uppercase text-sm border-b-4 border-accent/50 hover:border-accent transition-all duration-300 ease-in-out hover:text-accent shadow-[0_10px_20px_rgba(203,166,247,0.15)] hover:shadow-[0_15px_30px_rgba(203,166,247,0.25)] active:border-b-0 active:translate-y-1">
                                     <span class="flex items-center gap-3 relative z-10">
                                         View All
-                                    <svg viewBox="0 0 24 24" fill="currentColor"
+                                    <svg viewBox="0 0 24 24"
                                          class="w-5 h-5 transition-all duration-300 group-hover:translate-x-1">
-                                        <path d="M12 4L10.6 5.4L16.2 11H4V13H16.2L10.6 18.6L12 20L20 12L12 4Z"></path>
+                                        <path fill="currentColor"
+                                              d="M12 4L10.6 5.4L16.2 11H4V13H16.2L10.6 18.6L12 20L20 12L12 4Z"></path>
                                     </svg>
                                     </span>
-                                    <div class="absolute -inset-1 rounded-xl bg-gradient-to-br from-accent/20 to-accent0/20 blur-2xl group-hover:blur-xl transition-all duration-300 -z-10 opacity-0 group-hover:opacity-100"></div>
+                                    <span class="absolute -inset-1 rounded-xl bg-gradient-to-br from-accent/20 to-accent0/20 blur-2xl group-hover:blur-xl transition-all duration-300 -z-10 opacity-0 group-hover:opacity-100"></span>
                                 </button>
                             </a>
                         </div>
@@ -126,8 +127,8 @@
 
 
                     {#each repos as repo}
-                        <div class="group relative flex-none w-[380px] min-w-0 mb-10">
-                            <div class="relative overflow-hidden rounded-2xl bg-slate-950 shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-accent/15">
+                        <div class="group relative flex-none w-full max-w-[380px] 2xl:w-[380px] min-w-0 mb-10">
+                        <div class="relative overflow-hidden rounded-2xl bg-slate-950 shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-accent/15">
 
                                 <div class="absolute -left-16 -top-16 h-32 w-32 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/0 blur-2xl transition-all duration-500 group-hover:scale-150 group-hover:opacity-70"></div>
                                 <div class="absolute -right-16 -bottom-16 h-32 w-32 rounded-full bg-gradient-to-br from-purple-500/20 to-indigo-500/0 blur-2xl transition-all duration-500 group-hover:scale-150 group-hover:opacity-70"></div>
@@ -184,11 +185,11 @@
                                                aria-label={`Go to ${repo.name} GitHub repository`}>
                                                 <!-- gitHub icon SVG -->
                                                 <svg class="h-5 w-5"
-                                                     fill="currentColor"
                                                      viewBox="0 0 24 24"
                                                      aria-hidden="true">
                                                     <path fill-rule="evenodd"
                                                           clip-rule="evenodd"
+                                                          fill="currentColor"
                                                           d="M12 0C5.372 0 0 5.373 0 12c0 5.303 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.729.083-.729 1.205.084 1.838 1.237 1.838 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.31.469-2.381 1.236-3.22-.124-.304-.536-1.524.117-3.176 0 0 1.008-.322 3.301 1.23a11.484 11.484 0 013.003-.404c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.872.118 3.176.77.839 1.235 1.91 1.235 3.22 0 4.609-2.807 5.625-5.479 5.921.43.372.823 1.103.823 2.223v3.293c0 .319.192.694.801.576C20.565 21.796 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
                                                 </svg>
                                             </a>
@@ -203,10 +204,8 @@
             </div>
         {/if}
 
-        <span class="absolute bottom-0 left-0 w-full"
-              style="height: 30vh; overflow: hidden;">
-            <img alt="grid"
-                 class="w-full h-full object-cover"
+        <span class="absolute bottom-0 left-0 w-full h-[45vh] overflow-hidden">
+            <img alt="grid" class="w-full h-full object-cover"
                  src="./images/grid.svg"/>
         </span>
 
@@ -216,24 +215,18 @@
            id="to-section-1"
            style="width: 48px; height: 48px;">
             <svg class="w-6 h-6 -rotate-90 transition-transform"
-                 fill="none"
                  stroke="currentColor"
                  stroke-width="2"
                  viewBox="0 0 24 24"
                  xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"
+                      fill="none"/>
             </svg>
         </a>
     </section>
 </main>
 
 <style>
-    html, body {
-        margin: 0;
-        height: 100%;
-        overflow: hidden;
-    }
-
     .snap-container {
         height: 100vh;
         overflow-y: auto;
@@ -293,7 +286,13 @@
     onMount(async () => {
         try {
             const res = await fetch('https://api.github.com/users/Zelvios/repos');
-            if (!res.ok) throw new Error(res.statusText);
+
+            if (!res.ok) {
+                console.error('Fetch error:', res.statusText);
+                loadError = true;
+                return;
+            }
+
             const data = await res.json();
 
             repos = data
@@ -310,7 +309,11 @@
                     const langRes = await fetch(
                         `https://api.github.com/repos/Zelvios/${repo.name}/languages`
                     );
-                    if (!langRes.ok) throw new Error(langRes.statusText);
+                    if (!langRes.ok) {
+                        console.warn(`Could not load languages for ${repo.name}: ${langRes.statusText}`);
+                        repo.topLanguages = [];
+                        return;
+                    }
                     const langs = await langRes.json();
                     repo.topLanguages = Object.entries(langs)
                         .sort((a, b) => b[1] - a[1])
