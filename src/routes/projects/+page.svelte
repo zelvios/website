@@ -85,14 +85,18 @@
                                         <span class="text-sm font-medium text-white">Languages</span>
                                     </div>
 
-                                    {#if repo.topLanguages === null}
-                                        <p class="mt-1 text-xs text-slate-400 italic">Loading…</p>
+                                    {#if repo.topLanguages === null && !repo.langError}
+                                        <p class="mt-1 text-xs text-text italic">Loading…</p>
+                                    {:else if repo.langError}
+                                        <p class="mt-1 text-xs text-text italic">
+                                            Couldn’t load languages.
+                                        </p>
                                     {:else if repo.topLanguages.length > 0}
-                                        <p class="mt-1 text-xs text-slate-400">
+                                        <p class="mt-1 text-xs text-text">
                                             {repo.topLanguages.join(', ')}
                                         </p>
                                     {:else}
-                                        <p class="mt-1 text-xs text-slate-400">—</p>
+                                        <p class="mt-1 text-xs text-text">—</p>
                                     {/if}
                                 </div>
 
@@ -148,32 +152,48 @@
             if (!res.ok) throw new Error(res.statusText);
             const data = await res.json();
 
-            repos = [...data]
-                .filter(repo => repo.name.toLowerCase() !== 'zelvios')
+            const full = data
+                .filter(r => r.name.toLowerCase() !== 'zelvios')
                 .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
-            repos = await Promise.all(
-                repos.map(async repo => {
-                    repo.topLanguages = null;
+            const enriched = await Promise.all(
+                full.map(async repo => {
+                    let topLanguages = null;
+                    let langError = false;
+
                     try {
                         const langRes = await fetch(
                             `https://api.github.com/repos/Zelvios/${repo.name}/languages`
                         );
                         if (!langRes.ok) throw new Error(langRes.statusText);
+
                         const langs = await langRes.json();
-                        repo.topLanguages = Object.entries(langs)
+                        topLanguages = Object.entries(langs)
                             .sort(([, a], [, b]) => b - a)
                             .slice(0, 5)
                             .map(([lang]) => lang);
-                    } catch {
-                        repo.topLanguages = [];
+
+                    } catch (err) {
+                        console.error(`Failed to fetch languages for ${repo.name}:`, err);
+                        langError = true;
                     }
-                    return repo;
+
+                    return {
+                        name:         repo.name,
+                        html_url:     repo.html_url,
+                        description:  repo.description,
+                        created_at:   repo.created_at,
+                        topLanguages,
+                        langError
+                    };
                 })
             );
 
-            localStorage.setItem('zelvios_repos', JSON.stringify(repos));
+            localStorage.setItem('zelvios_repos', JSON.stringify(enriched));
+            localStorage.setItem('zelvios_repos_fetched_at', Date.now().toString());
+            repos = enriched;
             loadError = false;
+
         } catch (e) {
             console.error('Could not load repos:', e);
             loadError = true;
