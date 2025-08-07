@@ -275,9 +275,9 @@
     });
 
     const staticProjects = [
+        'user_auth',
         'dotfiles',
-        'todo-tui',
-        'BashControlCenter'
+        'todo-tui'
     ];
 
     let loadError = false;
