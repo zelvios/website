@@ -12,17 +12,21 @@
 </script>
 
 {#if repo}
-    <div data-reveal class="w-full max-w-3xl relative bg-gradient-to-b from-neutral-900 to-neutral-950 p-4 rounded-3xl overflow-hidden mx-auto">
-        <Grid size={19}/>
-        <a href={repo.html_url} target="_blank" rel="noopener noreferrer" class="w-full">
-            <p class="font-bold text-accent relative text-center text-xl mt-1 cursor-pointer transition-transform duration-200 transform hover:scale-105">
-                {repo.name}
-            </p>
-        </a>
+    <div data-reveal
+         class="group relative w-full max-w-3xl mx-auto rounded-3xl overflow-hidden
+            p-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent/10
+            border border-white/10 bg-[rgba(40,40,40,0.30)] backdrop-blur-md shadow-[2px_4px_16px_0px_rgba(248,248,248,0.06)_inset]">
 
-        <a href={repo.html_url} target="_blank" rel="noopener noreferrer" class="w-full relative group">
+    <Grid size={19}/>
+
+        <a href={repo.html_url}
+           target="_blank"
+           rel="noopener noreferrer"
+           class="block hover:underline">
+            <h3 class="text-xl text-center font-semibold text-accent">{repo.name}</h3>
+
             <div class="relative">
-                <div class="absolute inset-0 rounded-lg bg-accent2 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-25"></div>
+                <div class="absolute inset-0 rounded-lg"></div>
                 <img src={`https://raw.githubusercontent.com/Zelvios/${repo.name}/main/.github/screenshots/design.png`}
                      alt="Project screenshot"
                      class="mt-2 rounded-lg w-full h-64 object-cover relative z-10 cursor-pointer"/>
@@ -31,17 +35,31 @@
 
         <GradientLine height={1} glowOpacity={0.8}/>
 
-        <p class="text-text mt-1 font-normal relative z-20 repo-desc text-center">
-            {repo.description ?? 'No description provided.'}
-        </p>
+        <div class="m-7">
+            <p class="text-text mt-6 font-normal relative z-20 repo-desc text-center ml-4 mr-4">
+                {repo.description ?? 'No description provided.'}
+            </p>
 
-        {#if repo.topLanguages && repo.topLanguages.length}
-            <div class="mt-2 flex flex-wrap justify-center gap-2 relative z-20">
-                {#each repo.topLanguages as lang}
-                    <span class="px-2 py-1 text-xs font-medium bg-neutral-800 rounded">{lang}</span>
-                {/each}
+            <div class="rounded-xl bg-slate-900/50 p-4 mt-4">
+                <div class="flex items-center gap-2">
+                    <span class="text-sm font-medium text-accent">Languages</span>
+                </div>
+
+                {#if repo.topLanguages === null && !repo.langError}
+                    <p class="mt-1 text-xs text-text italic">Loading…</p>
+                {:else if repo.langError}
+                    <p class="mt-1 text-xs text-text italic">
+                        Couldn’t load languages.
+                    </p>
+                {:else if repo.topLanguages.length > 0}
+                    <p class="mt-1 text-xs text-text">
+                        {repo.topLanguages.join(', ')}
+                    </p>
+                {:else}
+                    <p class="mt-1 text-xs text-text">—</p>
+                {/if}
             </div>
-        {/if}
+        </div>
 
         <div class="mt-2 flex justify-between items-center relative z-20">
             <a href={repo.html_url}

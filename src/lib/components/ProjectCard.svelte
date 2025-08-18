@@ -1,4 +1,7 @@
 <script>
+    import Grid from "$lib/components/ui/Grid.svelte";
+    import GradientLine from "$lib/components/ui/GradientLine.svelte";
+
     export let repo;
     export let formatDate;
 </script>
@@ -9,12 +12,9 @@
         <div class="absolute -left-16 -top-16 h-32 w-32 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/0 blur-2xl transition-all duration-500 group-hover:scale-150 group-hover:opacity-70"></div>
         <div class="absolute -right-16 -bottom-16 h-32 w-32 rounded-full bg-gradient-to-br from-purple-500/20 to-indigo-500/0 blur-2xl transition-all duration-500 group-hover:scale-150 group-hover:opacity-70"></div>
 
+        <Grid size={20}/>
+
         <div class="relative p-6">
-            <div class="absolute right-6 top-6">
-                <img src="./images/projects.svg"
-                     alt="Project Icon"
-                     class="h-12 w-12 text-indigo-500/10"/>
-            </div>
 
             <!-- title & desc -->
             <div class="mt-4 space-y-2">
@@ -29,7 +29,9 @@
                          class="mt-4 rounded-lg w-full h-40 object-cover"/>
                 </a>
 
-                <p class="repo-desc text-slate-400 mt-2">
+                <GradientLine height={1} glowOpacity={0.8}/>
+
+                <p class="repo-desc text-slate-400 mt-6">
                     {repo.description ?? 'No description provided.'}
                 </p>
             </div>
