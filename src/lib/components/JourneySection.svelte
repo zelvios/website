@@ -49,7 +49,7 @@
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 1s cubic-bezier(.22,.61,.36,1), transform 1s cubic-bezier(.22,.61,.36,1)';
         el.style.willChange = 'opacity, transform';
-        el.style.transitionDelay = `${i * 120}ms`;
+        el.style.transitionDelay = `${i * 60}ms`;
         el.classList.remove('revealed');
     }
 
@@ -85,7 +85,7 @@
             }
         }, {
             root: null,
-            rootMargin: '-30% 0px -10% 0px',
+            rootMargin: '-10% 0px -10% 0px',
             threshold: [0, 0.01, 0.05, 0.1, 0.25, 0.5, 1]
         });
 
