@@ -39,6 +39,12 @@
             });
         }
     });
+
+    const birthDate = new Date(2002, 1, 7);
+    const today = new Date();
+
+    const age = today.getFullYear() - birthDate.getFullYear() -
+        (today < new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate()) ? 1 : 0);
 </script>
 
 <section class="relative overflow-hidden z-10 pt-35 md:pt-40 xl:pt-45 mb-20 min-h-screen" id="home">
@@ -85,9 +91,9 @@
 
             <div class="max-w-prose mx-auto mt-16">
                 <p class="text-md text-text mt-3 text-center" style="line-height: 1.5;">
-                    I’m a computer technician student specializing in programming, studying in Aalborg, Denmark.
-                    I focus on building reliable software and continuously developing my technical skills.
-                    You can check out my projects, contributions, and experiments in full-stack development on GitHub.
+                    Hi, I’m {age} and currently studying to become a Computer Technician at TECHCOLLEGE Aalborg, specializing in programming.
+                    I enjoy creating dependable software and exploring full-stack development.
+                    Check out my projects on GitHub or explore my site to see what I’ve been working on!
                 </p>
             </div>
         </div>
