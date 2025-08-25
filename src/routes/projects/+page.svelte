@@ -15,52 +15,97 @@
     }
 </style>
 
-<main>
-    <aside class="relative xl:fixed top-0 left-0 w-full xl:w-1/4 h-auto xl:h-screen pr-4 flex items-center justify-center text-text mt-20 xl:mt-0 mb-8 xl:mb-0" >
-        <div class="text-center fade-in max-w-xl mx-auto px-4">
-            <h1 class="text-6xl font-bold bg-gradient-to-r from-accent to-white bg-clip-text text-transparent">
-                Projects
-            </h1>
-            <p class="mt-4 text-base text-text leading-relaxed">
-                A complete list of my public GitHub repositories, including experiments, tools, and ongoing projects.
-            </p>
-        </div>
-    </aside>
 
-    <section class="mt-8 xl:mt-0  ml-0 xl:ml-[25vw] pr-4 pt-20 space-y-8 text-text">
-        <section class="snap-section flex flex-wrap items-start justify-center bg-base text-text relative gap-5 px-5 w-full">
-            {#if loadError || repos.length === 0}
-                <div class="w-full min-h-[50vh] flex items-center justify-center">
-                    {#if loadError}
-                        <div class="max-w-md min-w-[200px] px-4 text-center">
-                            <p class="text-accent font-semibold text-xl">
-                                Sorry, could not load GitHub projects at the moment.
-                            </p>
-                            <p class="text-text mt-2 text-base">
-                                Please try again later.
-                            </p>
-                        </div>
-                    {:else}
-                        <div class="text-center text-slate-400 text-lg">
-                            Loading projects…
-                        </div>
-                    {/if}
-                </div>
-            {:else}
-                {#each repos as repo}
-                    <ProjectCard {repo} {formatDate} />
-                {/each}
-            {/if}
-        </section>
-    </section>
+<main class="space-y-24">
+    <div class="relative h-96 w-full overflow-hidden bg-base/10 flex flex-col items-center justify-center rounded-lg">
+        <div
+                class="absolute inset-0 w-full h-full bg-base/10 z-10 [mask-image:radial-gradient(transparent,white)] pointer-events-none">
+        </div>
+        <BackgroundBoxes class="absolute inset-0 z-0"/>
+        <div class="mt-10 px-6 py-4 bg-white/10 rounded-3xl flex flex-col items-center justify-center gap-2 relative z-20 shadow-lg max-w-3xl mx-auto overflow-hidden border border-surface1">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-accent z-20">
+                Projects
+            </h2>
+
+            <div class="space-y-12 max-w-xl mx-auto text-center mb-6 z-20 text-text">
+                <p>
+                    A complete list of my public GitHub repositories, including experiments, tools, and ongoing
+                    projects.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="absolute bottom-0 left-0 w-full h-1 bg-accent/70 blur-md shadow-[0_0_10px_rgba(255,255,255,0.3)] z-20"></div>
+        <div class="absolute bottom-0 left-0 w-full border-t border-surface1"></div>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-4">
+        {#each techs as tech}
+            <TechCard
+                    name={tech}
+                    active={activeTech === tech}
+                    on:click={() => toggleTech(tech)}
+            />
+        {/each}
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-6 px-16">
+        {#each filteredRepos as repo (repo.name)}
+            <div class:fade-in={animate}>
+                <ProjectCard {repo} {formatDate}/>
+            </div>
+        {/each}
+    </div>
+
 </main>
 
+
 <script>
-    import { afterUpdate, onMount, tick } from 'svelte';
+    import BackgroundBoxes from "$lib/components/ui/BackgroundBoxes.svelte";
+    import {afterUpdate, onMount, tick} from 'svelte';
+    import TechCard from "$lib/components/TechCard.svelte";
     import ProjectCard from "$lib/components/ProjectCard.svelte";
+
+    let techs = ["Rust", "CSharp", "C", "Python"];
+    let activeTech = null;
 
     let loadError = false;
     let repos = [];
+
+    let animate = false;
+    let animateTimeout;
+
+    async function toggleTech(tech) {
+        activeTech = activeTech === tech ? null : tech;
+
+        animate = false;
+        if (animateTimeout) clearTimeout(animateTimeout);
+
+        await tick();
+
+        animate = true;
+
+        animateTimeout = setTimeout(() => (animate = false), 1100);
+    }
+
+    const techLabelToLang = {
+        CSharp: 'C#'
+    };
+
+    const normalize = s => (s || '').toString().toLowerCase().replace('#', 'sharp').replace(/\s+/g, '');
+
+    $: filteredRepos = (() => {
+        if (!activeTech) return repos;
+        const target = techLabelToLang[activeTech] ?? activeTech;
+        const normTarget = normalize(target);
+
+        return repos.filter(repo => {
+            if (!repo.topLanguages || !repo.topLanguages.length) return false;
+            return repo.topLanguages.some(lang => normalize(lang) === normTarget);
+        });
+    })();
+
 
     onMount(async () => {
         try {
@@ -105,10 +150,10 @@
                     }
 
                     return {
-                        name:         repo.name,
-                        html_url:     repo.html_url,
-                        description:  repo.description,
-                        created_at:   repo.created_at,
+                        name: repo.name,
+                        html_url: repo.html_url,
+                        description: repo.description,
+                        created_at: repo.created_at,
                         topLanguages,
                         langError
                     };
