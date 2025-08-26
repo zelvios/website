@@ -40,15 +40,25 @@
         <div class="absolute bottom-0 left-0 w-full border-t border-surface1"></div>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-4">
-        {#each techs as tech}
-            <TechCard
-                    name={tech}
-                    active={activeTech === tech}
-                    on:click={() => toggleTech(tech)}
-            />
-        {/each}
-    </div>
+    <div class="space-y-16">
+        <div class="flex flex-wrap justify-center gap-4">
+            {#each techs as tech}
+                <TechCard
+                        name={tech}
+                        active={activeTech === tech}
+                        on:click={() => toggleTech(tech)}
+                />
+            {/each}
+        </div>
+
+        <div class="text-center">
+            {#if activeTech}
+                <button class="text-text hover:text-accent transition-colors duration-200 cursor-pointer" on:click={clearFilters}>
+                    - Show All Projects -
+                </button>
+            {/if}
+            <GradientLine />
+        </div>
 
     <div class="flex flex-wrap justify-center gap-6 px-16">
         {#each filteredRepos as repo (repo.name)}
@@ -66,6 +76,7 @@
     import {afterUpdate, onMount, tick} from 'svelte';
     import TechCard from "$lib/components/TechCard.svelte";
     import ProjectCard from "$lib/components/ProjectCard.svelte";
+    import GradientLine from "$lib/components/ui/GradientLine.svelte";
 
     let techs = ["Rust", "CSharp", "C", "Python"];
     let activeTech = null;
@@ -75,6 +86,18 @@
 
     let animate = false;
     let animateTimeout;
+
+    function clearFilters() {
+        activeTech = null;
+
+        animate = false;
+        if (animateTimeout) clearTimeout(animateTimeout);
+
+        tick().then(() => {
+            animate = true;
+            animateTimeout = setTimeout(() => (animate = false), 1100);
+        });
+    }
 
     async function toggleTech(tech) {
         activeTech = activeTech === tech ? null : tech;
