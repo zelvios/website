@@ -53,19 +53,21 @@
 
         <div class="text-center">
             {#if activeTech}
-                <button class="text-text hover:text-accent transition-colors duration-200 cursor-pointer" on:click={clearFilters}>
+                <button class="text-text hover:text-accent transition-colors duration-200 cursor-pointer"
+                        on:click={clearFilters}>
                     - Show All Projects -
                 </button>
             {/if}
-            <GradientLine />
+            <GradientLine/>
         </div>
 
-    <div class="flex flex-wrap justify-center gap-6 px-16">
-        {#each filteredRepos as repo (repo.name)}
-            <div class:fade-in={animate}>
-                <ProjectCard {repo} {formatDate}/>
-            </div>
-        {/each}
+        <div class="flex flex-wrap justify-center gap-6 px-16">
+            {#each filteredRepos as repo (repo.name)}
+                <div class:fade-in={animate}>
+                    <ProjectCard {repo} {formatDate}/>
+                </div>
+            {/each}
+        </div>
     </div>
 
 </main>
