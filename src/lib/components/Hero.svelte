@@ -118,7 +118,7 @@
     </div>
 
     <div class="w-auto fade-in mt-20 mb-0 flex justify-center">
-        <img alt="Tab Icon" class="mx-auto" src="/images/tab.svg"/>
+        <img alt="Tab Icon" class="mx-auto" src="/images/tab.svg" fetchpriority="high"/>
     </div>
 </section>
 
