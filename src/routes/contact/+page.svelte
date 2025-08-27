@@ -1,55 +1,60 @@
-<main class="text-text p-6 ">
-	<div class="flex flex-col items-center justify-center space-y-6 mt-20 max-w-lg mx-auto fade-in">
-		<h1 class="text-3xl font-bold text-accent text-center">Contact</h1>
-		<p class="text-base text-text text-center">
-			Feel free to reach out to me through any of the channels below.
-		</p>
-	</div>
+<script>
+    import AmbientColor from "$lib/components/ui/AmbientColor.svelte";
+    import SocialButton from "$lib/components/SocialButton.svelte";
+</script>
 
-	<!-- Socials Section -->
-	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mt-12 max-w-lg mx-auto fade-in">
+<main class="text-text p-6 fade-in min-h-screen flex items-center justify-center">
+    <AmbientColor/>
 
-		<!-- Mail -->
-		<div class="flex flex-col items-center space-y-3">
-			<h2 class="text-lg font-semibold text-accent text-center">Email</h2>
-			<p class="text-sm text-text text-center max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg whitespace-nowrap">
-				<a href="mailto:contact@jacob-j.com?subject=Hello Jacob&body=Hi Jacob,%0A%0A" class="text-text underline hover:text-accent">
-					contact@jacob-j.com
-				</a>
-			</p>
-		</div>
+    <div class="flex flex-col md:flex-row items-center justify-center gap-16 w-full max-w-6xl transform -translate-y-24">
+        <div class="flex flex-col justify-center space-y-12 w-full md:w-1/2 text-center mx-auto">
+            <div class="space-y-4">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-accent z-20">
+                    Contact
+                </h2>
+                <div class="space-y-12 max-w-md text-text z-20 mx-auto">
+                    <p>
+                        Feel free to reach out to me through any of the channels below.
+                    </p>
+                </div>
+            </div>
 
-		<!-- GitHub -->
-		<div class="flex flex-col items-center space-y-3">
-			<h2 class="text-lg font-semibold text-accent text-center">GitHub</h2>
-			<p class="text-sm text-text text-center max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
-				<a href="https://github.com/zelvios" class="text-text underline hover:text-accent">zelvios</a>
-			</p>
-		</div>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-12 mx-auto">
+                <SocialButton
+                        href="mailto:contact@jacob-j.com?subject=Hello Jacob&body=Hi Jacob,%0A%0A"
+                        text="contact@jacob-j.com"
+                        title="Email"/>
 
-		<!-- LinkedIn -->
-		<div class="flex flex-col items-center space-y-3">
-			<h2 class="text-lg font-semibold text-accent text-center">LinkedIn</h2>
-			<p class="text-sm text-text text-center max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
-				<a href="https://www.linkedin.com/in/jacob-j-in/" class="text-text underline hover:text-accent">Jacob Jørgensen</a>
-			</p>
-		</div>
-	</div>
+                <SocialButton
+                        href="https://www.linkedin.com/in/jacob-j-in/"
+                        text="Jacob Jørgensen"
+                        title="LinkedIn"/>
+            </div>
+
+            <div class="mt-12 text-sm text-text z-20">
+                <p>
+                    You can also explore more of my work on
+                    <a class="text-accent" href="https://github.com/zelvios">GitHub</a>:
+                    <a class="font-semibold underline hover:text-accent" href="https://github.com/zelvios">zelvios</a>.
+                </p>
+            </div>
+        </div>
+    </div>
 </main>
 
 <style>
-	.fade-in {
-		animation: fadeIn 1s ease-out;
-	}
+    .fade-in {
+        animation: fadeIn 1s ease-out;
+    }
 
-	@keyframes fadeIn {
-		0% {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		100% {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 </style>
