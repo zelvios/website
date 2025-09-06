@@ -51,15 +51,18 @@
             {/each}
         </div>
 
-        <div class="text-center">
-            {#if activeTech}
-                <button class="text-text hover:text-accent transition-colors duration-200 cursor-pointer"
-                        on:click={clearFilters}>
-                    - Show All Projects -
-                </button>
-            {/if}
-            <GradientLine/>
+        <div class="text-center space-y-2">
+            <div class="h-6">
+                {#if activeTech}
+                    <button class="text-text hover:text-accent transition-colors duration-200 cursor-pointer"
+                            on:click={clearFilters} >
+                        - Show All Projects -
+                    </button>
+                {/if}
+            </div>
+            <GradientLine />
         </div>
+
 
         <div class="flex flex-wrap justify-center gap-6 px-16">
             {#each filteredRepos as repo (repo.name)}
