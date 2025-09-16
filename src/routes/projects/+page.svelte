@@ -17,13 +17,8 @@
 
 
 <main class="space-y-24">
-    <div class="relative h-96 w-full overflow-hidden bg-base/10 flex flex-col items-center justify-center rounded-lg">
-        <div
-                class="absolute inset-0 w-full h-full bg-base/10 z-10 [mask-image:radial-gradient(transparent,white)] pointer-events-none">
-        </div>
-        <BackgroundBoxes class="absolute inset-0 z-0"/>
-        <div class="mt-10 px-6 py-4 bg-white/10 rounded-3xl flex flex-col items-center justify-center gap-2 relative z-20 shadow-lg max-w-3xl mx-auto overflow-hidden border border-surface1">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center text-accent z-20">
+    <div class="relative h-72 mt-12 w-full overflow-hidden  flex flex-col items-center justify-center rounded-lg">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center text-accent z-20">
                 Projects
             </h2>
 
@@ -33,7 +28,6 @@
                     projects.
                 </p>
             </div>
-        </div>
 
 
         <div class="absolute bottom-0 left-0 w-full h-1 bg-accent/70 blur-md shadow-[0_0_10px_rgba(255,255,255,0.3)] z-20"></div>
@@ -77,7 +71,6 @@
 
 
 <script>
-    import BackgroundBoxes from "$lib/components/ui/BackgroundBoxes.svelte";
     import {afterUpdate, onMount, tick} from 'svelte';
     import TechCard from "$lib/components/TechCard.svelte";
     import ProjectCard from "$lib/components/ProjectCard.svelte";
