@@ -1,6 +1,6 @@
 <script>
     import Marquee from "$lib/components/ui/Marquee.svelte";
-    import Reviewcard from "$lib/components/ui/Reviewcard.svelte";
+    import ReviewCard from "$lib/components/ui/ReviewCard.svelte";
     import {
         SiC,
         SiDocker,
@@ -57,13 +57,13 @@
         <div class="w-full flex flex-col items-center justify-center overflow-hidden bg-background py-6 md:py-10 md:shadow-xl border-transparent z-0">
             <Marquee class="[--duration:20s]" pauseOnHover>
                 {#each firstRow as item}
-                    <Reviewcard {...item}/>
+                    <ReviewCard {...item}/>
                 {/each}
             </Marquee>
 
             <Marquee class="[--duration:20s]" pauseOnHover reverse>
                 {#each secondRow as item}
-                    <Reviewcard {...item}/>
+                    <ReviewCard {...item}/>
                 {/each}
             </Marquee>
         </div>
