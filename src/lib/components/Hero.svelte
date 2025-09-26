@@ -47,7 +47,7 @@
         (today < new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate()) ? 1 : 0);
 </script>
 
-<section class="relative overflow-hidden z-10 pt-35 md:pt-40 xl:pt-45 mb-20 min-h-screen" id="home">
+<main class="relative overflow-hidden z-10 pt-35 md:pt-40 xl:pt-45 mb-20 min-h-screen" id="home">
     <div class="max-w-7xl mx-auto">
         <div class="absolute -z-10 pointer-events-none inset-0 overflow-hidden -mx-28">
             <div class="absolute -z-1 -top-[128%] sm:-top-[107%] xl:-top-[73%] left-1/2 -translate-x-1/2 hero-circle-gradient w-full h-[1282px] rounded-full max-w-[1282px]"></div>
@@ -63,9 +63,9 @@
 
     <div class="flex flex-col items-center justify-center space-y-7 mt-[12vh] md:mt-[12vh]">
         <div class="w-auto text-center fade-in">
-            <h1 class="text-6xl font-bold bg-gradient-to-r from-accent to-white bg-clip-text text-transparent">
+            <h2 class="pointer-events-none font-semibold text-transparent bg-gradient-to-b from-accent to-white bg-clip-text text-4xl md:text-6xl pb-4">
                 Jacob Jørgensen
-            </h1>
+            </h2>
 
             <div class="flex justify-center gap-4 mt-4">
                 <a href="https://github.com/zelvios">
@@ -123,7 +123,7 @@
     <div class="w-auto fade-in mt-20 mb-0 flex justify-center">
         <img alt="Tab Icon" class="mx-auto" fetchpriority="high" src="/images/tab.svg"/>
     </div>
-</section>
+</main>
 
 <style>
     .fade-in {

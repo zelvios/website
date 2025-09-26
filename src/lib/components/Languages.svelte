@@ -13,6 +13,7 @@
         SiTypescript,
         SiVuedotjs
     } from "@icons-pack/svelte-simple-icons";
+    import AnimatedShinyText from "$lib/components/ui/AnimatedShinyText.svelte";
 
     let root;
 
@@ -34,21 +35,26 @@
 </script>
 
 
-<main class="relative flex items-start justify-center w-full mb-32 px-8 pt-16">
+<main class="relative flex items-start justify-center w-full px-8 pt-16">
     <div bind:this={root}
-         class="relative w-full sm:w-[75%] min-h-[50vh] h-auto p-8 sm:p-16 md:p-24 lg:p-32 rounded-xl border border-white/10 bg-white bg-opacity-[0.01] overflow-hidden flex flex-col justify-between"
+         class="relative w-full sm:w-[75%] min-h-[45vh] h-auto p-8 sm:p-16 md:p-24 lg:p-32 rounded-xl border border-white/10 bg-white bg-opacity-[0.01] overflow-hidden flex flex-col justify-between"
          id="part2">
 
         <div class="flex-1 z-10">
-            <p class="mt-5 text-sm text-accent line-clamp-3 text-left font-bold">
-                Programming Languages
-            </p>
+            <div class="pointer-events-none inline-block bg-surface/30 backdrop-blur-sm border border-surface1/40 rounded-lg px-3 py-1 shadow-sm mb-2">
+                <AnimatedShinyText
+                        class="text-sm font-bold text-transparent bg-clip-text animate-shimmer
+           bg-gradient-to-r from-transparent via-[#cba6f7]/80 via-50% to-transparent"
+                >
+                    Experince
+                </AnimatedShinyText>
+            </div>
 
-            <h2 class="pointer-events-none mt-2 font-semibold leading-none text-transparent bg-gradient-to-b from-accent to-black bg-clip-text text-4xl md:text-6xl text-left">
+            <h2 class="pointer-events-none mt-2 font-semibold leading-none text-transparent bg-gradient-to-b from-accent to-black bg-clip-text text-4xl md:text-6xl text-left pb-4">
                 Your Programmer
             </h2>
 
-            <p class="mt-5 text-sm text-gray-600 line-clamp-3 text-left max-w-lg">
+            <p class="mt-5 text-sm tex-text line-clamp-3 text-left max-w-lg">
                 Experienced with a wide range of tools and always ready to apply
                 that knowledge to learn and master new technologies.
             </p>
@@ -70,18 +76,6 @@
 
         <div class="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-base dark:from-background"></div>
         <div class="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-base dark:from-background"></div>
-
-        <div class="flex justify-center">
-            <a href="/projects">
-                <button class="flex items-center gap-2 cursor-pointer text-white text-sm font-medium bg-gradient-to-r from-gray-800 to-black px-4 py-2 rounded-full border border-gray-600 hover:scale-105 duration-200 hover:text-accent hover:border-gray-800 hover:from-black hover:to-gray-900">
-                    <svg height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 4H4C2.89543 4 2 4.89543 2 6V18C2 19.1046 2.89543 20 4 20H20C21.1046 20 22 19.1046 22 18V8C22 6.89543 21.1046 6 20 6H12L10 4Z"
-                              fill="#FFFFFF"/>
-                    </svg>
-                    Click to View Projects
-                </button>
-            </a>
-        </div>
 
         <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent pointer-events-none"></div>
 
