@@ -1,11 +1,11 @@
 <script>
-    import { onMount } from "svelte";
+    import {onMount} from "svelte";
 
     export let number = 10;
     let meteorStyles = [];
 
     onMount(() => {
-        meteorStyles = Array.from({ length: number }, () => ({
+        meteorStyles = Array.from({length: number}, () => ({
             top: `${-100 + Math.random() * 70}px`,
             left: `${Math.floor(Math.random() * window.innerWidth)}px`,
             animationDelay: `${Math.random() * 2}s`,

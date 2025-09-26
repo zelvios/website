@@ -8,21 +8,21 @@
     const patternId = `grid-${Math.random().toString(36).slice(2)}`;
 </script>
 
-<svg aria-hidden="true" {...$$restProps}>
+<svg {...$$restProps} aria-hidden="true">
     <defs>
         <pattern
-                id={patternId}
-                width={width}
                 height={height}
+                id={patternId}
                 patternUnits="userSpaceOnUse"
+                width={width}
                 x={x}
                 y={y}
         >
-            <path d={`M.5 ${height}V.5H${width}`} fill="none" />
+            <path d={`M.5 ${height}V.5H${width}`} fill="none"/>
         </pattern>
     </defs>
 
-    <rect width="100%" height="100%" stroke-width="0" fill={`url(#${patternId})`} />
+    <rect fill={`url(#${patternId})`} height="100%" stroke-width="0" width="100%"/>
 
     {#if squares}
         <svg x={x} y={y} class="overflow-visible">

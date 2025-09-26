@@ -4,7 +4,7 @@
 </script>
 
 <div class={`absolute top-0 left-0 w-screen h-screen pointer-events-none ${className}`}
-     style="z-index: {zIndex};" >
+     style="z-index: {zIndex};">
     <div class="absolute top-0 left-0"
          style="
          transform: translateY(-350px) rotate(-45deg);

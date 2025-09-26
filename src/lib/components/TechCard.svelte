@@ -8,14 +8,14 @@
 <button class="card text-gray-300 w-[120px] transition-all cursor-pointer group
                bg-gradient-to-tl from-gray-900 to-gray-950
                border-r-2 border-t-2 border-gray-900 rounded-lg overflow-hidden relative
-               hover:brightness-90 {active ? 'brightness-90' : ''}" on:click >
+               hover:brightness-90 {active ? 'brightness-90' : ''}" on:click>
     <div class="px-3 py-4 flex flex-col items-center text-center">
         <img alt={`${name} Logo`}
              class={`w-8 h-8 mb-3 transition-all
              group-hover:-translate-y-1 ${active ? '-translate-y-1' : ''}
              group-hover:drop-shadow-[0_0_6px_rgba(203,166,247,0.5)]
              ${active ? 'drop-shadow-[0_0_6px_rgba(203,166,247,0.5)]' : ''}`}
-             src={iconPath} />
+             src={iconPath}/>
 
         <div class="lowercase font-bold text-lg text-text">{name}</div>
     </div>

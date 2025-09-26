@@ -18,16 +18,16 @@
 
 <main class="space-y-24">
     <div class="relative h-72 mt-12 w-full overflow-hidden  flex flex-col items-center justify-center rounded-lg">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center text-accent z-20">
-                Projects
-            </h2>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center text-accent z-20">
+            Projects
+        </h2>
 
-            <div class="space-y-12 max-w-xl mx-auto text-center mb-6 z-20 text-text">
-                <p>
-                    A complete list of my public GitHub repositories, including experiments, tools, and ongoing
-                    projects.
-                </p>
-            </div>
+        <div class="space-y-12 max-w-xl mx-auto text-center mb-6 z-20 text-text">
+            <p>
+                A complete list of my public GitHub repositories, including experiments, tools, and ongoing
+                projects.
+            </p>
+        </div>
 
 
         <div class="absolute bottom-0 left-0 w-full h-1 bg-accent/70 blur-md shadow-[0_0_10px_rgba(255,255,255,0.3)] z-20"></div>
@@ -49,12 +49,12 @@
             <div class="h-6">
                 {#if activeTech}
                     <button class="text-text hover:text-accent transition-colors duration-200 cursor-pointer"
-                            on:click={clearFilters} >
+                            on:click={clearFilters}>
                         - Show All Projects -
                     </button>
                 {/if}
             </div>
-            <GradientLine />
+            <GradientLine/>
         </div>
 
 

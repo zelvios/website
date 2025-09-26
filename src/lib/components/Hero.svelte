@@ -1,7 +1,6 @@
 <script>
     import {onMount} from 'svelte';
     import Meteors from "$lib/components/ui/Meteors.svelte";
-    import PointerHighlight from "$lib/components/ui/PointerHighlight.svelte";
 
     onMount(() => {
         const begin = document.getElementById('to-section-2');
