@@ -1,9 +1,9 @@
 <script>
     import HeroSection from "$lib/components/Hero.svelte";
-    import JourneySection from "$lib/components/JourneySection.svelte";
+    import Languages from "$lib/components/Languages.svelte";
 </script>
 
 <main>
     <HeroSection />
-    <JourneySection />
+    <Languages />
 </main>

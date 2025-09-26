@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --accent-color: #f4b8e4;
+@layer base {
+    body {
+        @apply text-text bg-base leading-6;
+    }
 }
