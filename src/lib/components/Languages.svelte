@@ -21,13 +21,13 @@
         {name: "Rust", body: "Built apps with Tauri, Ratatui, and Diesel.", icon: SiRust},
         {name: "C#", body: "Developed e-commerce sites with APIs and databases.", icon: SiC},
         {name: "JavaScript", body: "Worked on multiple projects.", icon: SiJavascript},
-        {name: "TypeScript", body: "Used for type-safe project development.", icon: SiTypescript},
+        {name: "TypeScript", body: "Worked on multiple projects.", icon: SiTypescript},
         {name: "Vue", body: "Gained experience from education [ TECHCOLLEGE ].", icon: SiVuedotjs},
         {name: "Svelte", body: "Created portfolio and experimental projects.", icon: SiSvelte},
-        {name: "GitHub", body: "Managed and hosted Git repositories.", icon: SiGithub},
-        {name: "Docker", body: "Containerized apps and environments.", icon: SiDocker},
+        {name: "GitHub", body: "Using conventional commits for structured workflows.", icon: SiGithub},
+        {name: "Docker", body: "Using containers to simulate production environments.", icon: SiDocker},
         {name: "PostgreSQL", body: "Worked with relational databases via Diesel.", icon: SiPostgresql},
-        {name: "Python", body: "Built small projects and explored ML.", icon: SiPython}
+        {name: "Python", body: "Built small projects and explored Machine Learning.", icon: SiPython}
     ];
 
     let firstRow = languages.slice(0, languages.length / 2);
@@ -50,7 +50,7 @@
                 </AnimatedShinyText>
             </div>
 
-            <h2 class="pointer-events-none mt-2 font-semibold leading-none text-transparent bg-gradient-to-b from-accent to-white bg-clip-text text-4xl md:text-6xl text-left pb-4">
+            <h2 class="pointer-events-none mt-2 font-semibold leading-none text-accent text-4xl md:text-6xl text-left pb-4">
                 Your Programmer
             </h2>
 

@@ -4,8 +4,15 @@
     import ProjectCard from '$lib/components/ProjectCard.svelte';
     import GradientLine from '$lib/components/ui/GradientLine.svelte';
     import {type EnrichedRepo, fetchAllRepos, formatDate, normalize, techLabelToLang} from '$lib/api/repos';
+    import AmbientColor from "$lib/components/ui/AmbientColor.svelte";
 
-    let techs = ["Rust", "CSharp", "C", "Python"];
+    const techs: Record<string, string> = {
+        Rust: "#e07b39",
+        CSharp: "#68217A",
+        C: "#4b5563",
+        Python: "#facc15"
+    };
+
     let activeTech: string | null = null;
 
     let repos: EnrichedRepo[] = [];
@@ -67,29 +74,25 @@
     });
 </script>
 
-<main class="space-y-24">
-    <div class="relative h-72 mt-12 w-full overflow-hidden  flex flex-col items-center justify-center rounded-lg">
-        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center text-accent z-20">
+<main class="pt-32 relative fade-in">
+    <AmbientColor/>
+    <div class="mt-28 fade-in mb-14">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center text-accent">
             Projects
         </h2>
-
         <div class="space-y-12 max-w-xl mx-auto text-center mb-6 z-20 text-text">
             <p>
-                A complete list of my public GitHub repositories, including experiments, tools, and ongoing
-                projects.
+                A complete list of my public GitHub repositories, including experiments, tools, and ongoing projects.
             </p>
         </div>
-
-
-        <div class="absolute bottom-0 left-0 w-full h-1 bg-accent/70 blur-md shadow-[0_0_10px_rgba(255,255,255,0.3)] z-20"></div>
-        <div class="absolute bottom-0 left-0 w-full border-t border-surface1"></div>
     </div>
 
     <div class="space-y-16">
         <div class="flex flex-wrap justify-center gap-4">
-            {#each techs as tech}
+            {#each Object.keys(techs) as tech}
                 <TechCard
                         name={tech}
+                        color={techs[tech]}
                         active={activeTech === tech}
                         on:click={() => toggleTech(tech)}
                 />

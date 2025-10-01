@@ -1,27 +1,76 @@
-<script>
-    export let name;
-    export let active = false;
+<script lang="ts">
+    import {Motion, useMotionTemplate, useMotionValue} from "svelte-motion";
+    import {createEventDispatcher, onMount} from "svelte";
 
-    const iconPath = `/images/icons/${name.toLowerCase()}.svg`;
+    export let name: string;
+    export let active: boolean = false;
+    export let color: string = "#cba6f7";
+
+    let gradientSize = 150;
+    let gradientColor = color;
+    let gradientOpacity = 0.8;
+
+    let gradSize = useMotionValue(gradientSize);
+    let gradColor = useMotionValue(gradientColor);
+    let mouseX = useMotionValue(-gradientSize);
+    let mouseY = useMotionValue(-gradientSize);
+
+    function handleMouseMove(e: MouseEvent) {
+        const rect = (e.currentTarget as HTMLButtonElement).getBoundingClientRect();
+        mouseX.set(e.clientX - rect.left);
+        mouseY.set(e.clientY - rect.top);
+    }
+
+    function handleMouseLeave() {
+        mouseX.set(-gradientSize);
+        mouseY.set(-gradientSize);
+    }
+
+    onMount(() => {
+        mouseX.set(-gradientSize);
+        mouseY.set(-gradientSize);
+    });
+
+    let bg = useMotionTemplate`radial-gradient(${gradSize}px circle at ${mouseX}px ${mouseY}px, ${gradColor}, transparent 100%)`;
+
+    const dispatch = createEventDispatcher();
 </script>
 
-<button class="card text-gray-300 w-[120px] transition-all cursor-pointer group
-               bg-gradient-to-tl from-gray-900 to-gray-950
-               border-r-2 border-t-2 border-gray-900 rounded-lg overflow-hidden relative
-               hover:brightness-90 {active ? 'brightness-90' : ''}" on:click>
-    <div class="px-3 py-4 flex flex-col items-center text-center">
-        <img alt={`${name} Logo`}
-             class={`w-8 h-8 mb-3 transition-all
-             group-hover:-translate-y-1 ${active ? '-translate-y-1' : ''}
-             group-hover:drop-shadow-[0_0_6px_rgba(203,166,247,0.5)]
-             ${active ? 'drop-shadow-[0_0_6px_rgba(203,166,247,0.5)]' : ''}`}
-             src={iconPath}/>
+<main>
+    <button
+            class="group relative flex overflow-hidden rounded-xl
+           bg-neutral-100 dark:bg-neutral-900
+           items-center justify-center gap-2
+           w-[180px] h-[100px] cursor-pointer
+           transition-all duration-500 ease-in-out
+           ring-0
+           hover:ring-2
+           {active ? 'ring-2' : ''}"
+            on:click={() => dispatch("click")}
+            on:mouseleave={handleMouseLeave}
+            on:mousemove={handleMouseMove}
+            style="--tw-ring-color: {color}; color: {active ? color : ''};">
 
-        <div class="lowercase font-bold text-lg text-text">{name}</div>
-    </div>
+        <div class="relative z-10 flex items-center gap-3">
+            <img alt={`${name} Logo`} class="w-8 h-8" src={`/images/icons/${name.toLowerCase()}.svg`}/>
+            <p
+                    class="lowercase font-bold text-lg transition-colors duration-300"
+                    style="color: {active ? color : ''};"
+            >
+                {name}
+            </p>
+        </div>
 
-    <div class="h-2 w-full bg-gradient-to-l via-accent rounded transition-all absolute bottom-0 {active ? 'blur-xl' : 'group-hover:blur-xl blur-2xl'}"
-    ></div>
 
-    <div class="h-0.5 m-auto rounded transition-all {active ? 'w-full bg-gradient-to-l via-accent' : 'w-[70%] bg-gradient-to-l via-accent2 group-hover:w-full group-hover:via-accent'}"></div>
-</button>
+        <Motion let:motion
+                style={{
+            background: bg,
+            opacity: gradientOpacity,
+            }}>
+            <div class="pointer-events-none absolute -inset-px rounded-xl opacity-0
+                   transition-opacity duration-300
+                   group-hover:opacity-100 {active ? 'opacity-100' : ''}"
+                 use:motion/>
+        </Motion>
+    </button>
+</main>

@@ -4,12 +4,13 @@
 
     export let pattern = null;
     export let size = 20;
+    export let count = 7;
 
     let p = pattern;
 
     onMount(() => {
         if (!p) {
-            p = Array.from({length: 5}, () => [
+            p = Array.from({length: count}, () => [
                 Math.floor(Math.random() * 4) + 7,
                 Math.floor(Math.random() * 6) + 1,
             ]);
