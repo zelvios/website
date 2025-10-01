@@ -37,7 +37,7 @@
 
 <main class="relative flex items-start justify-center w-full px-8 pt-16">
     <div bind:this={root}
-         class="relative w-full sm:w-[75%] min-h-[45vh] h-auto p-8 sm:p-16 md:p-24 lg:p-32 rounded-xl border border-white/10 bg-white bg-opacity-[0.01] overflow-hidden flex flex-col justify-between"
+         class="relative w-full sm:w-[80%] min-h-[45vh] h-auto p-8 sm:p-16 md:p-24 lg:p-32 rounded-xl border border-white/10 bg-white bg-opacity-[0.01] overflow-hidden flex flex-col justify-between"
          id="part2">
 
         <div class="flex-1 z-10">
@@ -50,7 +50,7 @@
                 </AnimatedShinyText>
             </div>
 
-            <h2 class="pointer-events-none mt-2 font-semibold leading-none text-transparent bg-gradient-to-b from-accent to-black bg-clip-text text-4xl md:text-6xl text-left pb-4">
+            <h2 class="pointer-events-none mt-2 font-semibold leading-none text-transparent bg-gradient-to-b from-accent to-white bg-clip-text text-4xl md:text-6xl text-left pb-4">
                 Your Programmer
             </h2>
 

@@ -17,13 +17,11 @@ export default {
             },
             keyframes: {
                 meteor: {
-                    '0%': {
-                        transform: 'translateY(0) translateX(0) rotate(215deg)',
-                        opacity: '1',
-                    },
-                    '100%': {
-                        transform: 'translateY(500px) translateX(500px) rotate(215deg)',
-                        opacity: '0',
+                    "0%": { transform: "rotate(215deg) translateX(0)", opacity: 1 },
+                    "70%": { opacity: 1 },
+                    "100%": {
+                        transform: "rotate(215deg) translateX(-500px)",
+                        opacity: 0,
                     },
                 },
                 marquee: {
@@ -44,7 +42,7 @@ export default {
                 },
             },
             animation: {
-                meteor: 'meteor linear infinite',
+                meteor: "meteor 5s linear infinite",
                 marquee: "marquee var(--duration) linear infinite",
                 "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
                 shimmer: "shimmer 8s infinite",

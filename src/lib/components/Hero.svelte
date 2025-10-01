@@ -48,6 +48,7 @@
 </script>
 
 <main class="relative overflow-hidden z-10 pt-35 md:pt-40 xl:pt-45 mb-20 min-h-screen" id="home">
+    <Meteors number={10}/>
     <div class="max-w-7xl mx-auto">
         <div class="absolute -z-10 pointer-events-none inset-0 overflow-hidden -mx-28">
             <div class="absolute -z-1 -top-[128%] sm:-top-[107%] xl:-top-[73%] left-1/2 -translate-x-1/2 hero-circle-gradient w-full h-[1282px] rounded-full max-w-[1282px]"></div>
@@ -99,7 +100,6 @@
             </div>
         </div>
 
-        <Meteors/>
         <div class="fade-in">
             <a id="to-section-2">
                 <button class="flex items-center gap-2 cursor-pointer text-white text-sm font-medium
