@@ -8,7 +8,6 @@ Personal portfolio website, designed to highlight my work and skills.<br>
 > This is a very early version.
 > Expect some parts to be experimental and subject to change.
 
-
 ## :herb: Live
 You can visit the live version of the site below.
 
